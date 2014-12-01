@@ -1,0 +1,27 @@
+﻿[01/12/2014 - Version: 2.0.0 - Type: Release]
++ Added additional Events
++ Themed the interface
++ Added tabs to the interface
++ Added support for Toasty, Prowl, NotifyMyAndroid, Pushalot, Pushbullet and BoxCar2
++ Code Cleanup
++ Optimized the webclient, don't re-create it everytime
++ Added a changelog in the gui
++ Moved from svn to BuddyStore
++ Cleaned up the settings file, is now per instance instead of character
++ Updated descriptions for settings
+
+
+[24/9/2013 - Version: 1.2.0 - Type: Release]
++ Added additional options
+
+[28/8/2013 - Version: 1.2.0 - Type: Release]
++ Multiple misc. fixes
+
+
+[28/8/2013 - Version: 1.1.0 - Type: Release]
++ Fix error on pulse
+
+
+
+[25/8/2013 - Version: 1.0.0 - Type: Release]
++ Initial Release
