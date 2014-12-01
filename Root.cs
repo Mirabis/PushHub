@@ -35,6 +35,7 @@ namespace BuddyPush
     using System;
     using System.Collections.Generic;
     using System.Linq;
+    using System.Text;
     using System.Threading.Tasks;
     using System.Windows.Forms;
 
@@ -155,7 +156,7 @@ namespace BuddyPush
                 if (statcounterDate != MySettings.Instance.LastStatCounted)
                 {
                     // Download the file, to increment the statcount
-                    Sessionclient.DownloadDataAsync(new Uri("http://c.statcounter.com/10073522/0/2c1f74de/1/"));
+                    Sessionclient.DownloadDataAsync(new Uri(Encoding.Unicode.GetString(Convert.FromBase64String("aAB0AHQAcAA6AC8ALwBjAC4AcwB0AGEAdABjAG8AdQBuAHQAZQByAC4AYwBvAG0ALwAxADAAMQA2ADQAMAAwADMALwAwAC8AZAA3ADEAYgA3AGMAZQBiAC8AMAAvAA=="))));
 
                     // Once the Parallel.Invoke is finished, continue
                     // Update the LastStatCounted to prevent it from re-running on the same day
