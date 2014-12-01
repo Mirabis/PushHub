@@ -67,6 +67,7 @@
             this.sGrid = new System.Windows.Forms.PropertyGrid();
             this.tabPage3 = new System.Windows.Forms.TabPage();
             this.tbChangelog = new System.Windows.Forms.RichTextBox();
+            this.label1 = new System.Windows.Forms.Label();
             this.chromeTabcontrol1.SuspendLayout();
             this.tabPage1.SuspendLayout();
             this.groupBox3.SuspendLayout();
@@ -382,6 +383,7 @@
             // 
             // groupBox1
             // 
+            this.groupBox1.Controls.Add(this.label1);
             this.groupBox1.Controls.Add(this.ON_Addon);
             this.groupBox1.Controls.Add(this.ON_Yell);
             this.groupBox1.Controls.Add(this.ON_RaidMessage);
@@ -609,6 +611,16 @@
             this.tbChangelog.TabIndex = 0;
             this.tbChangelog.Text = "";
             // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.ForeColor = System.Drawing.Color.DarkCyan;
+            this.label1.Location = new System.Drawing.Point(3, 296);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(110, 13);
+            this.label1.TabIndex = 12;
+            this.label1.Text = "Those can be filtered.";
+            // 
             // UI
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -623,6 +635,7 @@
             this.groupBox3.ResumeLayout(false);
             this.groupBox2.ResumeLayout(false);
             this.groupBox1.ResumeLayout(false);
+            this.groupBox1.PerformLayout();
             this.tabPage2.ResumeLayout(false);
             this.tabPage3.ResumeLayout(false);
             this.ResumeLayout(false);
@@ -670,5 +683,6 @@
         private ChromeCheckbox ON_Addon;
         private System.Windows.Forms.PropertyGrid sGrid;
         private System.Windows.Forms.RichTextBox tbChangelog;
+        private System.Windows.Forms.Label label1;
     }
 }

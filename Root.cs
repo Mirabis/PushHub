@@ -78,7 +78,7 @@ namespace BuddyPush
         /// </summary>
         public override Version Version
         {
-            get { return new Version(2, 0, 0); }
+            get { return new Version(2, 0, 1,0); }
         }
 
         public override bool WantButton
@@ -619,8 +619,8 @@ namespace BuddyPush
 
         private static void OnNewProfile(BotEvents.Profile.NewProfileLoadedEventArgs args)
         {
-            string title = string.Format("New Profile Loaded: {0}", args.NewProfile);
-            string message = string.Format("Ur Honorbuddy instance has changed profile from {0} to {1}.", args.OldProfile, args.NewProfile);
+            string title = string.Format("New Profile Loaded: {0}", args.NewProfile.Name);
+            string message = string.Format("Ur Honorbuddy instance has changed profile from {0} to {1}.", args.OldProfile.Name, args.NewProfile.Name);
             SendNotification(message, title);
         }
 
