@@ -49,7 +49,7 @@ namespace BuddyPush
 
         private static MySettings _instance;
 
-        public MySettings() : base(Path.Combine(Path.Combine(Utilities.AssemblyDirectory, "Settings"), string.Format("BuddyPush_{0}.xml", StyxWoW.Me.Name))) { }
+        public MySettings() : base(Path.Combine(Path.Combine(Utilities.AssemblyDirectory, "Settings"), string.Format("BuddyPush.xml"))) { }
 
         public static MySettings Instance
         {
@@ -120,7 +120,7 @@ namespace BuddyPush
         [Setting, DefaultValue(""), Category("PushBullet"), DisplayName("API Key"), Description("The authentication key.")]
         public string Pushbullet_Token { get; set; }
 
-        [Setting, DefaultValue("")]
+        [Setting, DefaultValue(""), Category("Toasty"), DisplayName("Device"), Description("The device to send it to.")]
         public string Toasty_DeviceID { get; set; }
 
         [Setting, DefaultValue(""), Category("Prowl"), DisplayName("API Key"), Description("The authentication key.")]

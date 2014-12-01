@@ -33,6 +33,7 @@
 namespace BuddyPush.Interface
 {
     using System;
+    using System.ComponentModel;
     using System.Windows.Forms;
 
     using BuddyPush.Properties;
@@ -45,7 +46,10 @@ namespace BuddyPush.Interface
             this.LoadOldSettings();
             this.tbChangelog.Text = Resources.Changelog;
             this.tbChangelog.ReadOnly = true;
+            this.Closing += OnClosing;
         }
+
+        private void OnClosing(object sender, CancelEventArgs cancelEventArgs) { MySettings.Instance.Save(); }
 
         private void addTrigger_Click(object sender, EventArgs e)
         {
