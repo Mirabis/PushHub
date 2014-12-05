@@ -2,7 +2,7 @@
 // Author: Moreno Sint Hill alias Mirabis
 // Created on: 01/12/2014                
 // Last Edited on: 01/12/2014
-// Project: BuddyPush
+// Project: PushHub
 // File: Prowl.cs
 // Copyright:  2014, Moreno Sint Hill - All rights reserved.
 // 
@@ -30,7 +30,7 @@
 // of the authors and should not be interpreted as representing official policies, 
 // either expressed or implied, of the FreeBSD Project.
 #endregion
-namespace BuddyPush.Providers
+namespace PushHub.Providers
 {
     using System;
     using System.Collections.Specialized;
@@ -38,7 +38,7 @@ namespace BuddyPush.Providers
     using System.Text;
     using System.Threading.Tasks;
 
-    using BuddyPush.Externals;
+    using PushHub.Externals;
 
     using Styx.Common;
 
@@ -70,7 +70,7 @@ namespace BuddyPush.Providers
                     var values = new NameValueCollection();
                     values["apikey"] = MySettings.Instance.Prowl_Token;
                     string providerkey = MySettings.Instance.Prowl_ProviderKey;
-                    values["application"] = "BuddyPush";
+                    values["application"] = "PushHub";
                     if (!string.IsNullOrEmpty(providerkey)) values["providerkey "] = providerkey;
                     if (!string.IsNullOrEmpty(title)) values["event"] = title.Truncate(1024);
 

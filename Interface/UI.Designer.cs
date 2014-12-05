@@ -1,4 +1,4 @@
-﻿namespace BuddyPush.Interface
+﻿namespace PushHub.Interface
 {
     partial class UI
     {
@@ -28,41 +28,41 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.chromeTabcontrol1 = new BuddyPush.ChromeTabcontrol();
+            this.chromeTabcontrol1 = new PushHub.ChromeTabcontrol();
             this.tabPage1 = new System.Windows.Forms.TabPage();
             this.tbField = new System.Windows.Forms.TextBox();
-            this.rmTrigger = new BuddyPush.ChromeButton();
-            this.addTrigger = new BuddyPush.ChromeButton();
-            this.ON_Filtering = new BuddyPush.ChromeOnOff();
-            this.chromeLabel1 = new BuddyPush.ChromeLabel();
+            this.rmTrigger = new PushHub.ChromeButton();
+            this.addTrigger = new PushHub.ChromeButton();
+            this.ON_Filtering = new PushHub.ChromeOnOff();
+            this.chromeLabel1 = new PushHub.ChromeLabel();
             this.tbFilter = new System.Windows.Forms.ListBox();
-            this.TestBtn = new BuddyPush.ChromeButton();
+            this.TestBtn = new PushHub.ChromeButton();
             this.groupBox3 = new System.Windows.Forms.GroupBox();
-            this.ON_ProfileChanged = new BuddyPush.ChromeCheckbox();
-            this.ON_QuestAccepted = new BuddyPush.ChromeCheckbox();
-            this.ON_MapChanged = new BuddyPush.ChromeCheckbox();
-            this.ON_Stop = new BuddyPush.ChromeCheckbox();
-            this.ON_Start = new BuddyPush.ChromeCheckbox();
+            this.ON_ProfileChanged = new PushHub.ChromeCheckbox();
+            this.ON_QuestAccepted = new PushHub.ChromeCheckbox();
+            this.ON_MapChanged = new PushHub.ChromeCheckbox();
+            this.ON_Stop = new PushHub.ChromeCheckbox();
+            this.ON_Start = new PushHub.ChromeCheckbox();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
-            this.ON_Emote = new BuddyPush.ChromeCheckbox();
-            this.ON_BGJoined = new BuddyPush.ChromeCheckbox();
-            this.ON_BGLeft = new BuddyPush.ChromeCheckbox();
-            this.ON_Achiev = new BuddyPush.ChromeCheckbox();
-            this.ON_Death = new BuddyPush.ChromeCheckbox();
-            this.ON_LevelUp = new BuddyPush.ChromeCheckbox();
+            this.ON_Emote = new PushHub.ChromeCheckbox();
+            this.ON_BGJoined = new PushHub.ChromeCheckbox();
+            this.ON_BGLeft = new PushHub.ChromeCheckbox();
+            this.ON_Achiev = new PushHub.ChromeCheckbox();
+            this.ON_Death = new PushHub.ChromeCheckbox();
+            this.ON_LevelUp = new PushHub.ChromeCheckbox();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
-            this.ON_Addon = new BuddyPush.ChromeCheckbox();
-            this.ON_Yell = new BuddyPush.ChromeCheckbox();
-            this.ON_RaidMessage = new BuddyPush.ChromeCheckbox();
-            this.ON_TradeMessage = new BuddyPush.ChromeCheckbox();
-            this.ON_GameMaster = new BuddyPush.ChromeCheckbox();
-            this.ON_Officer = new BuddyPush.ChromeCheckbox();
-            this.ON_BGMessage = new BuddyPush.ChromeCheckbox();
-            this.ON_PartyMessage = new BuddyPush.ChromeCheckbox();
-            this.ON_Say = new BuddyPush.ChromeCheckbox();
-            this.ON_GuildMessage = new BuddyPush.ChromeCheckbox();
-            this.ON_BnetMessage = new BuddyPush.ChromeCheckbox();
-            this.ON_Whisper = new BuddyPush.ChromeCheckbox();
+            this.ON_Addon = new PushHub.ChromeCheckbox();
+            this.ON_Yell = new PushHub.ChromeCheckbox();
+            this.ON_RaidMessage = new PushHub.ChromeCheckbox();
+            this.ON_TradeMessage = new PushHub.ChromeCheckbox();
+            this.ON_GameMaster = new PushHub.ChromeCheckbox();
+            this.ON_Officer = new PushHub.ChromeCheckbox();
+            this.ON_BGMessage = new PushHub.ChromeCheckbox();
+            this.ON_PartyMessage = new PushHub.ChromeCheckbox();
+            this.ON_Say = new PushHub.ChromeCheckbox();
+            this.ON_GuildMessage = new PushHub.ChromeCheckbox();
+            this.ON_BnetMessage = new PushHub.ChromeCheckbox();
+            this.ON_Whisper = new PushHub.ChromeCheckbox();
             this.tabPage2 = new System.Windows.Forms.TabPage();
             this.sGrid = new System.Windows.Forms.PropertyGrid();
             this.tabPage3 = new System.Windows.Forms.TabPage();
@@ -163,7 +163,7 @@
             this.ON_Filtering.TabIndex = 8;
             this.ON_Filtering.Text = "chromeOnOff1";
             this.ON_Filtering.Transparent = false;
-            this.ON_Filtering.CheckedChanged += new BuddyPush.ChromeOnOff.CheckedChangedEventHandler(this.ON_Filtering_CheckedChanged);
+            this.ON_Filtering.CheckedChanged += new PushHub.ChromeOnOff.CheckedChangedEventHandler(this.ON_Filtering_CheckedChanged);
             // 
             // chromeLabel1
             // 
@@ -225,7 +225,7 @@
             this.ON_ProfileChanged.TabIndex = 17;
             this.ON_ProfileChanged.Text = "on Profile changed";
             this.ON_ProfileChanged.Transparent = false;
-            this.ON_ProfileChanged.CheckedChanged += new BuddyPush.ChromeCheckbox.CheckedChangedEventHandler(this.ON_ProfileChanged_CheckedChanged);
+            this.ON_ProfileChanged.CheckedChanged += new PushHub.ChromeCheckbox.CheckedChangedEventHandler(this.ON_ProfileChanged_CheckedChanged);
             // 
             // ON_QuestAccepted
             // 
@@ -239,7 +239,7 @@
             this.ON_QuestAccepted.TabIndex = 16;
             this.ON_QuestAccepted.Text = "on Quest accepted";
             this.ON_QuestAccepted.Transparent = false;
-            this.ON_QuestAccepted.CheckedChanged += new BuddyPush.ChromeCheckbox.CheckedChangedEventHandler(this.ON_QuestAccepted_CheckedChanged);
+            this.ON_QuestAccepted.CheckedChanged += new PushHub.ChromeCheckbox.CheckedChangedEventHandler(this.ON_QuestAccepted_CheckedChanged);
             // 
             // ON_MapChanged
             // 
@@ -253,7 +253,7 @@
             this.ON_MapChanged.TabIndex = 15;
             this.ON_MapChanged.Text = "on Map changed";
             this.ON_MapChanged.Transparent = false;
-            this.ON_MapChanged.CheckedChanged += new BuddyPush.ChromeCheckbox.CheckedChangedEventHandler(this.ON_MapChanged_CheckedChanged);
+            this.ON_MapChanged.CheckedChanged += new PushHub.ChromeCheckbox.CheckedChangedEventHandler(this.ON_MapChanged_CheckedChanged);
             // 
             // ON_Stop
             // 
@@ -267,7 +267,7 @@
             this.ON_Stop.TabIndex = 14;
             this.ON_Stop.Text = "on Stop";
             this.ON_Stop.Transparent = false;
-            this.ON_Stop.CheckedChanged += new BuddyPush.ChromeCheckbox.CheckedChangedEventHandler(this.ON_Stop_CheckedChanged);
+            this.ON_Stop.CheckedChanged += new PushHub.ChromeCheckbox.CheckedChangedEventHandler(this.ON_Stop_CheckedChanged);
             // 
             // ON_Start
             // 
@@ -281,7 +281,7 @@
             this.ON_Start.TabIndex = 13;
             this.ON_Start.Text = "on Start";
             this.ON_Start.Transparent = false;
-            this.ON_Start.CheckedChanged += new BuddyPush.ChromeCheckbox.CheckedChangedEventHandler(this.ON_Start_CheckedChanged);
+            this.ON_Start.CheckedChanged += new PushHub.ChromeCheckbox.CheckedChangedEventHandler(this.ON_Start_CheckedChanged);
             // 
             // groupBox2
             // 
@@ -323,7 +323,7 @@
             this.ON_BGJoined.TabIndex = 13;
             this.ON_BGJoined.Text = "on Battleground joined";
             this.ON_BGJoined.Transparent = false;
-            this.ON_BGJoined.CheckedChanged += new BuddyPush.ChromeCheckbox.CheckedChangedEventHandler(this.ON_BGJoined_CheckedChanged);
+            this.ON_BGJoined.CheckedChanged += new PushHub.ChromeCheckbox.CheckedChangedEventHandler(this.ON_BGJoined_CheckedChanged);
             // 
             // ON_BGLeft
             // 
@@ -337,7 +337,7 @@
             this.ON_BGLeft.TabIndex = 12;
             this.ON_BGLeft.Text = "on Battleground left";
             this.ON_BGLeft.Transparent = false;
-            this.ON_BGLeft.CheckedChanged += new BuddyPush.ChromeCheckbox.CheckedChangedEventHandler(this.ON_BGLeft_CheckedChanged);
+            this.ON_BGLeft.CheckedChanged += new PushHub.ChromeCheckbox.CheckedChangedEventHandler(this.ON_BGLeft_CheckedChanged);
             // 
             // ON_Achiev
             // 
@@ -351,7 +351,7 @@
             this.ON_Achiev.TabIndex = 11;
             this.ON_Achiev.Text = "on Achievement";
             this.ON_Achiev.Transparent = false;
-            this.ON_Achiev.CheckedChanged += new BuddyPush.ChromeCheckbox.CheckedChangedEventHandler(this.ON_Achiev_CheckedChanged);
+            this.ON_Achiev.CheckedChanged += new PushHub.ChromeCheckbox.CheckedChangedEventHandler(this.ON_Achiev_CheckedChanged);
             // 
             // ON_Death
             // 
@@ -365,7 +365,7 @@
             this.ON_Death.TabIndex = 10;
             this.ON_Death.Text = "on Death";
             this.ON_Death.Transparent = false;
-            this.ON_Death.CheckedChanged += new BuddyPush.ChromeCheckbox.CheckedChangedEventHandler(this.ON_Death_CheckedChanged);
+            this.ON_Death.CheckedChanged += new PushHub.ChromeCheckbox.CheckedChangedEventHandler(this.ON_Death_CheckedChanged);
             // 
             // ON_LevelUp
             // 
@@ -379,7 +379,7 @@
             this.ON_LevelUp.TabIndex = 9;
             this.ON_LevelUp.Text = "on Level up";
             this.ON_LevelUp.Transparent = false;
-            this.ON_LevelUp.CheckedChanged += new BuddyPush.ChromeCheckbox.CheckedChangedEventHandler(this.ON_LevelUp_CheckedChanged);
+            this.ON_LevelUp.CheckedChanged += new PushHub.ChromeCheckbox.CheckedChangedEventHandler(this.ON_LevelUp_CheckedChanged);
             // 
             // groupBox1
             // 
@@ -415,7 +415,7 @@
             this.ON_Addon.TabIndex = 11;
             this.ON_Addon.Text = "on Addon message";
             this.ON_Addon.Transparent = false;
-            this.ON_Addon.CheckedChanged += new BuddyPush.ChromeCheckbox.CheckedChangedEventHandler(this.ON_Addon_CheckedChanged);
+            this.ON_Addon.CheckedChanged += new PushHub.ChromeCheckbox.CheckedChangedEventHandler(this.ON_Addon_CheckedChanged);
             // 
             // ON_Yell
             // 
@@ -429,7 +429,7 @@
             this.ON_Yell.TabIndex = 10;
             this.ON_Yell.Text = "on Yell message";
             this.ON_Yell.Transparent = false;
-            this.ON_Yell.CheckedChanged += new BuddyPush.ChromeCheckbox.CheckedChangedEventHandler(this.chromeCheckbox1_CheckedChanged_1);
+            this.ON_Yell.CheckedChanged += new PushHub.ChromeCheckbox.CheckedChangedEventHandler(this.chromeCheckbox1_CheckedChanged_1);
             // 
             // ON_RaidMessage
             // 
@@ -443,7 +443,7 @@
             this.ON_RaidMessage.TabIndex = 9;
             this.ON_RaidMessage.Text = "on Raid message";
             this.ON_RaidMessage.Transparent = false;
-            this.ON_RaidMessage.CheckedChanged += new BuddyPush.ChromeCheckbox.CheckedChangedEventHandler(this.chromeCheckbox1_CheckedChanged);
+            this.ON_RaidMessage.CheckedChanged += new PushHub.ChromeCheckbox.CheckedChangedEventHandler(this.chromeCheckbox1_CheckedChanged);
             // 
             // ON_TradeMessage
             // 
@@ -457,7 +457,7 @@
             this.ON_TradeMessage.TabIndex = 8;
             this.ON_TradeMessage.Text = "on Trade message";
             this.ON_TradeMessage.Transparent = false;
-            this.ON_TradeMessage.CheckedChanged += new BuddyPush.ChromeCheckbox.CheckedChangedEventHandler(this.ON_TradeMessage_CheckedChanged);
+            this.ON_TradeMessage.CheckedChanged += new PushHub.ChromeCheckbox.CheckedChangedEventHandler(this.ON_TradeMessage_CheckedChanged);
             // 
             // ON_GameMaster
             // 
@@ -471,7 +471,7 @@
             this.ON_GameMaster.TabIndex = 7;
             this.ON_GameMaster.Text = "on Gamemaster message";
             this.ON_GameMaster.Transparent = false;
-            this.ON_GameMaster.CheckedChanged += new BuddyPush.ChromeCheckbox.CheckedChangedEventHandler(this.ON_GameMaster_CheckedChanged);
+            this.ON_GameMaster.CheckedChanged += new PushHub.ChromeCheckbox.CheckedChangedEventHandler(this.ON_GameMaster_CheckedChanged);
             // 
             // ON_Officer
             // 
@@ -485,7 +485,7 @@
             this.ON_Officer.TabIndex = 6;
             this.ON_Officer.Text = "on Officer message";
             this.ON_Officer.Transparent = false;
-            this.ON_Officer.CheckedChanged += new BuddyPush.ChromeCheckbox.CheckedChangedEventHandler(this.ON_Officer_CheckedChanged);
+            this.ON_Officer.CheckedChanged += new PushHub.ChromeCheckbox.CheckedChangedEventHandler(this.ON_Officer_CheckedChanged);
             // 
             // ON_BGMessage
             // 
@@ -499,7 +499,7 @@
             this.ON_BGMessage.TabIndex = 5;
             this.ON_BGMessage.Text = "on BG message";
             this.ON_BGMessage.Transparent = false;
-            this.ON_BGMessage.CheckedChanged += new BuddyPush.ChromeCheckbox.CheckedChangedEventHandler(this.ON_BGMessage_CheckedChanged);
+            this.ON_BGMessage.CheckedChanged += new PushHub.ChromeCheckbox.CheckedChangedEventHandler(this.ON_BGMessage_CheckedChanged);
             // 
             // ON_PartyMessage
             // 
@@ -513,7 +513,7 @@
             this.ON_PartyMessage.TabIndex = 4;
             this.ON_PartyMessage.Text = "on Party message";
             this.ON_PartyMessage.Transparent = false;
-            this.ON_PartyMessage.CheckedChanged += new BuddyPush.ChromeCheckbox.CheckedChangedEventHandler(this.ON_PartyMessage_CheckedChanged);
+            this.ON_PartyMessage.CheckedChanged += new PushHub.ChromeCheckbox.CheckedChangedEventHandler(this.ON_PartyMessage_CheckedChanged);
             // 
             // ON_Say
             // 
@@ -527,7 +527,7 @@
             this.ON_Say.TabIndex = 3;
             this.ON_Say.Text = "on Say message";
             this.ON_Say.Transparent = false;
-            this.ON_Say.CheckedChanged += new BuddyPush.ChromeCheckbox.CheckedChangedEventHandler(this.ON_Say_CheckedChanged);
+            this.ON_Say.CheckedChanged += new PushHub.ChromeCheckbox.CheckedChangedEventHandler(this.ON_Say_CheckedChanged);
             // 
             // ON_GuildMessage
             // 
@@ -541,7 +541,7 @@
             this.ON_GuildMessage.TabIndex = 2;
             this.ON_GuildMessage.Text = "on Guild message";
             this.ON_GuildMessage.Transparent = false;
-            this.ON_GuildMessage.CheckedChanged += new BuddyPush.ChromeCheckbox.CheckedChangedEventHandler(this.ON_GuildMessage_CheckedChanged);
+            this.ON_GuildMessage.CheckedChanged += new PushHub.ChromeCheckbox.CheckedChangedEventHandler(this.ON_GuildMessage_CheckedChanged);
             // 
             // ON_BnetMessage
             // 
@@ -555,7 +555,7 @@
             this.ON_BnetMessage.TabIndex = 1;
             this.ON_BnetMessage.Text = "on BNET";
             this.ON_BnetMessage.Transparent = false;
-            this.ON_BnetMessage.CheckedChanged += new BuddyPush.ChromeCheckbox.CheckedChangedEventHandler(this.ON_BnetMessage_CheckedChanged);
+            this.ON_BnetMessage.CheckedChanged += new PushHub.ChromeCheckbox.CheckedChangedEventHandler(this.ON_BnetMessage_CheckedChanged);
             // 
             // ON_Whisper
             // 
@@ -569,7 +569,7 @@
             this.ON_Whisper.TabIndex = 0;
             this.ON_Whisper.Text = "on Whisper";
             this.ON_Whisper.Transparent = false;
-            this.ON_Whisper.CheckedChanged += new BuddyPush.ChromeCheckbox.CheckedChangedEventHandler(this.ON_Whisper_CheckedChanged);
+            this.ON_Whisper.CheckedChanged += new PushHub.ChromeCheckbox.CheckedChangedEventHandler(this.ON_Whisper_CheckedChanged);
             // 
             // tabPage2
             // 
@@ -628,7 +628,7 @@
             this.ClientSize = new System.Drawing.Size(671, 331);
             this.Controls.Add(this.chromeTabcontrol1);
             this.Name = "UI";
-            this.Text = "BuddyPush - Your Honorbuddy Push Provider";
+            this.Text = "PushHub - Your Honorbuddy Push Provider";
             this.chromeTabcontrol1.ResumeLayout(false);
             this.tabPage1.ResumeLayout(false);
             this.tabPage1.PerformLayout();

@@ -2,7 +2,7 @@
 // Author: Moreno Sint Hill alias Mirabis
 // Created on: 27/10/2013                
 // Last Edited on: 01/12/2014
-// Project: BuddyPush
+// Project: PushHub
 // File: MySettings.cs
 // Copyright:  2014, Moreno Sint Hill - All rights reserved.
 // 
@@ -32,12 +32,12 @@
 #endregion
 using DefaultValue = Styx.Helpers.DefaultValueAttribute;
 
-namespace BuddyPush
+namespace PushHub
 {
     using System.ComponentModel;
     using System.IO;
 
-    using BuddyPush.Externals;
+    using PushHub.Externals;
 
     using Styx;
     using Styx.Common;
@@ -49,7 +49,7 @@ namespace BuddyPush
 
         private static MySettings _instance;
 
-        public MySettings() : base(Path.Combine(Path.Combine(Utilities.AssemblyDirectory, "Settings"), string.Format("BuddyPush.xml"))) { }
+        public MySettings() : base(Path.Combine(Path.Combine(Utilities.AssemblyDirectory, "Settings"), string.Format("PushHub.xml"))) { }
 
         public static MySettings Instance
         {

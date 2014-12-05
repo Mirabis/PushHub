@@ -2,7 +2,7 @@
 // Author: Moreno Sint Hill alias Mirabis
 // Created on: 27/10/2013                
 // Last Edited on: 01/12/2014
-// Project: BuddyPush
+// Project: PushHub
 // File: AssemblyInfo.cs
 // Copyright:  2014, Moreno Sint Hill - All rights reserved.
 // 
@@ -37,11 +37,11 @@ using System.Runtime.InteropServices;
 // set of attributes. Change these attribute values to modify the information
 // associated with an assembly.
 
-[assembly: AssemblyTitle("BuddyPush")]
+[assembly: AssemblyTitle("PushHub")]
 [assembly: AssemblyDescription("")]
 [assembly: AssemblyConfiguration("")]
 [assembly: AssemblyCompany("")]
-[assembly: AssemblyProduct("BuddyPush")]
+[assembly: AssemblyProduct("PushHub")]
 [assembly: AssemblyCopyright("Copyright ©  2013")]
 [assembly: AssemblyTrademark("")]
 [assembly: AssemblyCulture("")]

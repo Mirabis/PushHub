@@ -2,7 +2,7 @@
 // Author: Moreno Sint Hill alias Mirabis
 // Created on: 01/12/2014                
 // Last Edited on: 01/12/2014
-// Project: BuddyPush
+// Project: PushHub
 // File: BetterWebClient.cs
 // Copyright:  2014, Moreno Sint Hill - All rights reserved.
 // 
@@ -30,7 +30,7 @@
 // of the authors and should not be interpreted as representing official policies, 
 // either expressed or implied, of the FreeBSD Project.
 #endregion
-namespace BuddyPush.Externals
+namespace PushHub.Externals
 {
     using System;
     using System.Net;

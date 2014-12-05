@@ -2,7 +2,7 @@
 // Author: Moreno Sint Hill alias Mirabis
 // Created on: 27/10/2013                
 // Last Edited on: 01/12/2014
-// Project: BuddyPush
+// Project: PushHub
 // File: Root.cs
 // Copyright:  2014, Moreno Sint Hill - All rights reserved.
 // 
@@ -30,7 +30,7 @@
 // of the authors and should not be interpreted as representing official policies, 
 // either expressed or implied, of the FreeBSD Project.
 #endregion
-namespace BuddyPush
+namespace PushHub
 {
     using System;
     using System.Collections.Generic;
@@ -39,9 +39,9 @@ namespace BuddyPush
     using System.Threading.Tasks;
     using System.Windows.Forms;
 
-    using BuddyPush.Externals;
-    using BuddyPush.Interface;
-    using BuddyPush.Providers;
+    using PushHub.Externals;
+    using PushHub.Interface;
+    using PushHub.Providers;
 
     using Styx;
     using Styx.Common;
@@ -62,7 +62,7 @@ namespace BuddyPush
         /// </summary>
         public override string Name
         {
-            get { return "BuddyPush"; }
+            get { return "PushHub"; }
         }
 
         /// <summary>
@@ -91,12 +91,12 @@ namespace BuddyPush
         /// </summary>
         public override void OnEnable()
         {
-            Logging.Write("[BuddyPush] -- Adding character name to Filter list");
+            Logging.Write("[PushHub] -- Adding character name to Filter list");
             Filter.Add(StyxWoW.Me.Name);
-            Logging.Write("[BuddyPush] -- Registering Event listeners");
+            Logging.Write("[PushHub] -- Registering Event listeners");
             RegisterEvents();
-            Logging.Write("[BuddyPush] Initialization complete!");
-            Logging.Write("[BuddyPush] Visiting StatTracker for statistics, data will be removed every 30 days.");
+            Logging.Write("[PushHub] Initialization complete!");
+            Logging.Write("[PushHub] Visiting StatTracker for statistics, data will be removed every 30 days.");
             StatCounter();
         }
 

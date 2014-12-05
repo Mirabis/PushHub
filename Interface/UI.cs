@@ -2,7 +2,7 @@
 // Author: Moreno Sint Hill alias Mirabis
 // Created on: 01/12/2014                
 // Last Edited on: 01/12/2014
-// Project: BuddyPush
+// Project: PushHub
 // File: UI.cs
 // Copyright:  2014, Moreno Sint Hill - All rights reserved.
 // 
@@ -30,13 +30,13 @@
 // of the authors and should not be interpreted as representing official policies, 
 // either expressed or implied, of the FreeBSD Project.
 #endregion
-namespace BuddyPush.Interface
+namespace PushHub.Interface
 {
     using System;
     using System.ComponentModel;
     using System.Windows.Forms;
 
-    using BuddyPush.Properties;
+    using PushHub.Properties;
 
     public partial class UI : Form
     {
@@ -115,7 +115,7 @@ namespace BuddyPush.Interface
             this.ON_ProfileChanged.Checked = MySettings.Instance.ON_ProfileChanged;
         }
 
-        private void TestBtn_Click(object sender, EventArgs e) { Root.SendNotification("This is a test notification", "BuddyPush Test", ""); }
+        private void TestBtn_Click(object sender, EventArgs e) { Root.SendNotification("This is a test notification", "PushHub Test", ""); }
 
         private void ON_LevelUp_CheckedChanged(object sender) { MySettings.Instance.ON_LevelUp = this.ON_LevelUp.Checked; }
 

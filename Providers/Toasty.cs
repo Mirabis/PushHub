@@ -2,7 +2,7 @@
 // Author: Moreno Sint Hill alias Mirabis
 // Created on: 01/12/2014                
 // Last Edited on: 01/12/2014
-// Project: BuddyPush
+// Project: PushHub
 // File: Toasty.cs
 // Copyright:  2014, Moreno Sint Hill - All rights reserved.
 // 
@@ -30,7 +30,7 @@
 // of the authors and should not be interpreted as representing official policies, 
 // either expressed or implied, of the FreeBSD Project.
 #endregion
-namespace BuddyPush.Providers
+namespace PushHub.Providers
 {
     using System;
     using System.Collections.Specialized;
@@ -38,7 +38,7 @@ namespace BuddyPush.Providers
     using System.Text;
     using System.Threading.Tasks;
 
-    using BuddyPush.Externals;
+    using PushHub.Externals;
 
     using Styx.Common;
 
@@ -72,7 +72,7 @@ namespace BuddyPush.Providers
 
                     if (!string.IsNullOrEmpty(message)) values["notification[long_message]"] = Encoding.UTF8.GetByteCount(message) <= 4000 ? message.Truncate(10000) : "Error: Message bigger then 4KB";
 
-                    values["sender"] = "BuddyPush";
+                    values["sender"] = "PushHub";
                     client.Headers[HttpRequestHeader.ContentEncoding] = "multipart/form-data";
 
                     byte[] responseArray = await client.UploadValuesTaskAsync(new Uri(string.Format(API_URL, MySettings.Instance.Toasty_DeviceID)), values);

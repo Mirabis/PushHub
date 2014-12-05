@@ -8,7 +8,7 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace BuddyPush.Properties {
+namespace PushHub.Properties {
     using System;
     
     
@@ -39,7 +39,7 @@ namespace BuddyPush.Properties {
         internal static global::System.Resources.ResourceManager ResourceManager {
             get {
                 if (object.ReferenceEquals(resourceMan, null)) {
-                    global::System.Resources.ResourceManager temp = new global::System.Resources.ResourceManager("BuddyPush.Properties.Resources", typeof(Resources).Assembly);
+                    global::System.Resources.ResourceManager temp = new global::System.Resources.ResourceManager("PushHub.Properties.Resources", typeof(Resources).Assembly);
                     resourceMan = temp;
                 }
                 return resourceMan;
@@ -74,7 +74,8 @@ namespace BuddyPush.Properties {
         ///+ Updated descriptions for settings
         ///
         ///
-        ///[24/9/2013 - Version: 1.2.0 - Type: Release]        /// [rest of string was truncated]&quot;;.
+        ///[24/9/2013 - Version: 1.2.0 - Type: Release]
+        /// [rest of string was truncated]&quot;;.
         /// </summary>
         internal static string Changelog {
             get {
