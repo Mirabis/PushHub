@@ -1,4 +1,5 @@
 ﻿#region License
+
 // Author: Moreno Sint Hill alias Mirabis
 // Created on: 01/12/2014                
 // Last Edited on: 01/12/2014
@@ -29,7 +30,9 @@
 // The views and conclusions contained in the software and documentation are those
 // of the authors and should not be interpreted as representing official policies, 
 // either expressed or implied, of the FreeBSD Project.
+
 #endregion
+
 namespace PushHub.Providers
 {
     using System;
@@ -65,14 +68,14 @@ namespace PushHub.Providers
         {
             try
             {
-                using (BetterWebClient client = Root.Sessionclient)
+                using (var client = new BetterWebClient())
                 {
                     var values = new NameValueCollection();
 
-                    string authEncoded = Convert.ToBase64String(Encoding.UTF8.GetBytes(MySettings.Instance.Pushbullet_Token + ":"));
+                    var authEncoded = Convert.ToBase64String(Encoding.UTF8.GetBytes(MySettings.Instance.Pushbullet_Token + ":"));
                     values["AuthorizationToken"] = MySettings.Instance.Pushbullet_Token;
                     values["type"] = "link"; // Title, url and body
-                    string device = MySettings.Instance.Pushbullet_Device;
+                    var device = MySettings.Instance.Pushbullet_Device;
                     if (!string.IsNullOrEmpty(device)) values["device_iden"] = device.Truncate(250);
                     if (!string.IsNullOrEmpty(title)) values["title "] = title.Truncate(250);
 
@@ -82,7 +85,7 @@ namespace PushHub.Providers
                     client.Headers[HttpRequestHeader.Authorization] = string.Format("Basic {0}", authEncoded);
                     client.Headers[HttpRequestHeader.Accept] = "application/json";
                     client.Headers[HttpRequestHeader.ContentType] = "application/x-www-form-urlencoded";
-                    byte[] responseArray = await client.UploadValuesTaskAsync(API_URL, values);
+                    var responseArray = await client.UploadValuesTaskAsync(API_URL, values);
                     return Encoding.ASCII.GetString(responseArray);
                 }
             }

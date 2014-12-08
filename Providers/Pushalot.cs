@@ -1,4 +1,5 @@
 ﻿#region License
+
 // Author: Moreno Sint Hill alias Mirabis
 // Created on: 01/12/2014                
 // Last Edited on: 01/12/2014
@@ -29,7 +30,9 @@
 // The views and conclusions contained in the software and documentation are those
 // of the authors and should not be interpreted as representing official policies, 
 // either expressed or implied, of the FreeBSD Project.
+
 #endregion
+
 namespace PushHub.Providers
 {
     using System;
@@ -65,11 +68,11 @@ namespace PushHub.Providers
         /// <param name="IsSilent">if set to <c>true</c> [is silent].</param>
         /// <param name="IsImportant">if set to <c>true</c> [is important].</param>
         /// <returns>Task&lt;System.String&gt;.</returns>
-        public static async Task<string> PushNotification(string message, string title = null, string url = null, string urlTitle = null, int priority = 0, bool IsSilent = false, bool IsImportant = false)
+        public static async Task<string> PushNotification(string message, string title = null, string url = null, string urlTitle = null, bool IsSilent = false, bool IsImportant = false)
         {
             try
             {
-                using (BetterWebClient client = Root.Sessionclient)
+                using (var client = new BetterWebClient())
                 {
                     var values = new NameValueCollection();
                     values["AuthorizationToken"] = MySettings.Instance.Pushalot_Token;
@@ -86,7 +89,7 @@ namespace PushHub.Providers
                     if (IsImportant) values["IsImportant"] = "True";
 
                     client.Headers[HttpRequestHeader.ContentType] = "application/x-www-form-urlencoded";
-                    byte[] responseArray = await client.UploadValuesTaskAsync(API_URL, values);
+                    var responseArray = await client.UploadValuesTaskAsync(API_URL, values);
                     return Encoding.ASCII.GetString(responseArray);
                 }
             }

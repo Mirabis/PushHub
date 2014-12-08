@@ -1,4 +1,5 @@
 ﻿#region License
+
 // Author: Moreno Sint Hill alias Mirabis
 // Created on: 01/12/2014                
 // Last Edited on: 01/12/2014
@@ -29,7 +30,9 @@
 // The views and conclusions contained in the software and documentation are those
 // of the authors and should not be interpreted as representing official policies, 
 // either expressed or implied, of the FreeBSD Project.
+
 #endregion
+
 namespace PushHub.Providers
 {
     using System;
@@ -65,7 +68,7 @@ namespace PushHub.Providers
         {
             try
             {
-                using (BetterWebClient client = Root.Sessionclient)
+                using (var client = new BetterWebClient())
                 {
                     var values = new NameValueCollection();
                     values["user_credentials"] = MySettings.Instance.BoxCar2_Token;
@@ -78,11 +81,11 @@ namespace PushHub.Providers
 
                     if (!string.IsNullOrEmpty(url)) values["url"] = url.Truncate(2000);
 
-                    BoxCarSound sound = MySettings.Instance.BoxCar2_Sound;
+                    var sound = MySettings.Instance.BoxCar2_Sound;
                     values["notification[sound]"] = sound.ToString().Replace('_', '-').ToLower();
 
                     client.Headers[HttpRequestHeader.ContentType] = "application/x-www-form-urlencoded";
-                    byte[] responseArray = await client.UploadValuesTaskAsync(API_URL, values);
+                    var responseArray = await client.UploadValuesTaskAsync(API_URL, values);
                     return Encoding.ASCII.GetString(responseArray);
                 }
             }

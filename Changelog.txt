@@ -1,4 +1,19 @@
-﻿[01/12/2014 - Version: 2.0.0 - Type: Release]
+﻿[08/12/2014 - Version: 2.0.2.0 - Type: Release]
++ Fixed the concurrent I/O error
++ Leaning more onto the garbage collector
++ Added OnDisconnect
++ Fixed RemoveEvents bugging the plugin
++ Optimized Shutdown code
++ Added LuaEventHandler from Leaves
++ Fix achievement notification not working
++ Better error & formatting handlers
+
+
+[03/12/2014 - Version: 2.0.1.0 - Type: Release]
++ Renamed the plugin
++ Interface cleanup
+
+[01/12/2014 - Version: 2.0.0.0 - Type: Release]
 + Added additional Events
 + Themed the interface
 + Added tabs to the interface

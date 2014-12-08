@@ -1,4 +1,5 @@
 ﻿#region License
+
 // Author: Moreno Sint Hill alias Mirabis
 // Created on: 01/12/2014                
 // Last Edited on: 01/12/2014
@@ -29,7 +30,9 @@
 // The views and conclusions contained in the software and documentation are those
 // of the authors and should not be interpreted as representing official policies, 
 // either expressed or implied, of the FreeBSD Project.
+
 #endregion
+
 namespace PushHub.Externals
 {
     using System;
@@ -38,6 +41,8 @@ namespace PushHub.Externals
 
     internal class BetterWebClient : WebClient
     {
+        public bool Refer = true;
+
         private readonly Random _random = new Random();
 
         private readonly string[] _userAgents =
@@ -59,9 +64,7 @@ namespace PushHub.Externals
                 @"Opera/9.70 (Linux ppc64 ; U; en) Presto/2.2.1"
             };
 
-        public bool Refer = true;
-
-        public BetterWebClient(bool refer = false) { this.Refer = refer; }
+        public BetterWebClient(bool refer = false) { Refer = refer; }
 
         /// <summary>
         ///     Returns a <see cref="T:System.Net.WebRequest" /> object for the specified resource.
@@ -76,11 +79,11 @@ namespace PushHub.Externals
             if (request != null)
             {
                 request.AutomaticDecompression = DecompressionMethods.Deflate | DecompressionMethods.GZip;
-                request.UserAgent = this.GetRandomUserAgent();
+                request.UserAgent = GetRandomUserAgent();
                 request.Headers["Accept-Encoding"] = "gzip";
-                if (this.Refer) request.Referer = "http://www.google.com";
+                if (Refer) request.Referer = "http://www.google.com";
                 request.CachePolicy = new RequestCachePolicy(RequestCacheLevel.CacheIfAvailable);
-                request.Proxy = null; //TODO: Change this to settings, someone might want to use a proxy
+              //  request.ContentType = "application/x-www-form-urlencoded";
                 //   Console.WriteLine(@"WebRequest took {0}", Logger.Elapsed);
                 return request;
             }
@@ -89,8 +92,8 @@ namespace PushHub.Externals
 
         internal string GetRandomUserAgent()
         {
-            if (MySettings.Instance == null) return this._userAgents[this._random.Next(0, this._userAgents.Length - 1)];
-            return this._userAgents[this._random.Next(0, this._userAgents.Length - 1)];
+            if (MySettings.Instance == null) return _userAgents[_random.Next(0, _userAgents.Length - 1)];
+            return _userAgents[_random.Next(0, _userAgents.Length - 1)];
         }
     }
 }

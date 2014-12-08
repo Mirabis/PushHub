@@ -1,4 +1,5 @@
 ﻿#region License
+
 // Author: Moreno Sint Hill alias Mirabis
 // Created on: 01/12/2014                
 // Last Edited on: 01/12/2014
@@ -29,7 +30,9 @@
 // The views and conclusions contained in the software and documentation are those
 // of the authors and should not be interpreted as representing official policies, 
 // either expressed or implied, of the FreeBSD Project.
+
 #endregion
+
 namespace PushHub.Providers
 {
     using System;
@@ -66,7 +69,7 @@ namespace PushHub.Providers
         {
             try
             {
-                using (BetterWebClient client = Root.Sessionclient)
+                using (var client = new BetterWebClient())
                 {
                     var values = new NameValueCollection();
                     values["apikey"] = MySettings.Instance.NMY_Token;
@@ -76,10 +79,10 @@ namespace PushHub.Providers
                     if (!string.IsNullOrEmpty(message)) values["description"] = message.Truncate(10000);
 
                     if (!string.IsNullOrEmpty(url)) values["url"] = url.Truncate(2000);
-                    NotificationPriority priority = MySettings.Instance.NMY_Priority;
+                    var priority = MySettings.Instance.NMY_Priority;
                     if ((int)priority != 0) values["priority"] = ((int)priority).ToString(CultureInfo.InvariantCulture);
                     client.Headers[HttpRequestHeader.ContentType] = "application/x-www-form-urlencoded";
-                    byte[] responseArray = await client.UploadValuesTaskAsync(API_URL, values);
+                    var responseArray = await client.UploadValuesTaskAsync(API_URL, values);
                     return Encoding.ASCII.GetString(responseArray);
                 }
             }

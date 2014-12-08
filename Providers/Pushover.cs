@@ -1,4 +1,5 @@
 ﻿#region License
+
 // Author: Moreno Sint Hill alias Mirabis
 // Created on: 01/12/2014                
 // Last Edited on: 01/12/2014
@@ -29,7 +30,9 @@
 // The views and conclusions contained in the software and documentation are those
 // of the authors and should not be interpreted as representing official policies, 
 // either expressed or implied, of the FreeBSD Project.
+
 #endregion
+
 namespace PushHub.Providers
 {
     using System;
@@ -67,22 +70,22 @@ namespace PushHub.Providers
         {
             try
             {
-                string editedtitle = string.Format("{0}: {1}", "PushHub", title);
+                var editedtitle = string.Format("{0}: {1}", "PushHub", title);
 
                 using (var wc = new BetterWebClient())
                 {
                     var parameters = new NameValueCollection { { "token", MySettings.Instance.Pushover_Token }, { "user", MySettings.Instance.Pushover_UserKey }, { "message", message } };
-                    string device = MySettings.Instance.Pushover_Device;
+                    var device = MySettings.Instance.Pushover_Device;
                     if (!string.IsNullOrEmpty(device)) parameters.Add("device", device);
                     if (!string.IsNullOrEmpty(title)) parameters.Add("title", editedtitle);
                     if (!string.IsNullOrEmpty(url)) parameters.Add("url", url);
                     if (!string.IsNullOrEmpty(urlTitle)) parameters.Add("urlTitle", urlTitle);
-                    NotificationPriority priority = MySettings.Instance.Pushover_Priority;
+                    var priority = MySettings.Instance.Pushover_Priority;
                     if ((int)priority != 0) parameters.Add("priority", ((int)priority).ToString(CultureInfo.InvariantCulture));
-                    PushoverSound sound = MySettings.Instance.Pushover_Sound;
+                    var sound = MySettings.Instance.Pushover_Sound;
                     if (sound != PushoverSound.Pushover) parameters.Add("sound", sound.ToString().ToLower());
 
-                    byte[] responseArray = await wc.UploadValuesTaskAsync(API_URL, parameters);
+                    var responseArray = await wc.UploadValuesTaskAsync(API_URL, parameters);
                     return Encoding.ASCII.GetString(responseArray);
                 }
             }

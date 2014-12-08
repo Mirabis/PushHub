@@ -1,4 +1,5 @@
 ﻿#region License
+
 // Author: Moreno Sint Hill alias Mirabis
 // Created on: 01/12/2014                
 // Last Edited on: 01/12/2014
@@ -29,7 +30,9 @@
 // The views and conclusions contained in the software and documentation are those
 // of the authors and should not be interpreted as representing official policies, 
 // either expressed or implied, of the FreeBSD Project.
+
 #endregion
+
 namespace PushHub
 {
     using System;
@@ -274,7 +277,7 @@ namespace PushHub
 
             if (!this.Enabled) lgb = new LinearGradientBrush(new Rectangle(0, 0, this.Width - 1, this.Height - 1), this._gtn, this._gbn, 90f);
 
-            GraphicsPath buttonpath = this.CreateRound(Rectangle.Round(lgb.Rectangle), 3);
+            var buttonpath = this.CreateRound(Rectangle.Round(lgb.Rectangle), 3);
             this.G.FillPath(lgb, this.CreateRound(Rectangle.Round(lgb.Rectangle), 3));
             if (!this.Enabled) this.G.FillPath(new SolidBrush(Color.FromArgb(50, Color.White)), this.CreateRound(Rectangle.Round(lgb.Rectangle), 3));
             this.G.SetClip(buttonpath);
@@ -477,7 +480,7 @@ namespace PushHub
                     lgb = new LinearGradientBrush(new Rectangle(0, 0, 14, 14), this._gtd, this._gbd, 90f);
                     break;
             }
-            GraphicsPath buttonpath = this.CreateRound(Rectangle.Round(lgb.Rectangle), 5);
+            var buttonpath = this.CreateRound(Rectangle.Round(lgb.Rectangle), 5);
             this.G.FillPath(lgb, this.CreateRound(Rectangle.Round(lgb.Rectangle), 3));
             this.G.SetClip(buttonpath);
             lgb = new LinearGradientBrush(new Rectangle(0, 0, 14, 5), Color.FromArgb(150, Color.White), Color.Transparent, 90f);
@@ -488,7 +491,7 @@ namespace PushHub
             this.DrawText(new SolidBrush(this._), 17, -2);
 
             if (!this.Checked) return;
-            Image check =
+            var check =
                 Image.FromStream(
                     new MemoryStream(
                         Convert.FromBase64String(
@@ -732,7 +735,7 @@ namespace PushHub
         {
             if (!this.IsHandleCreated || !this._checked) return;
 
-            foreach (Control c in from Control c in this.Parent.Controls where !ReferenceEquals(c, this) && c is ChromeRadioButton select c)
+            foreach (var c in from Control c in this.Parent.Controls where !ReferenceEquals(c, this) && c is ChromeRadioButton select c)
             {
                 ((ChromeRadioButton)c).Checked = false;
             }
@@ -860,14 +863,14 @@ namespace PushHub
         protected override void OnPaint(PaintEventArgs e)
         {
             var B = new Bitmap(this.Width, this.Height);
-            Graphics G = Graphics.FromImage(B);
+            var G = Graphics.FromImage(B);
             try
             {
                 this.SelectedTab.BackColor = Color.White;
             }
             catch (Exception) {}
             G.Clear(Color.White);
-            for (int i = 0; i <= this.TabCount - 1; i++)
+            for (var i = 0; i <= this.TabCount - 1; i++)
             {
                 var x2 = new Rectangle(new Point(this.GetTabRect(i).Location.X - 2, this.GetTabRect(i).Location.Y - 2), new Size(this.GetTabRect(i).Width + 3, this.GetTabRect(i).Height - 1));
                 var textrectangle = new Rectangle(x2.Location.X + 15, x2.Location.Y, x2.Width - 20, x2.Height);
@@ -995,14 +998,14 @@ namespace PushHub
         protected override void OnPaint(PaintEventArgs e)
         {
             var B = new Bitmap(this.Width, this.Height);
-            Graphics G = Graphics.FromImage(B);
+            var G = Graphics.FromImage(B);
             try
             {
                 if (this.SelectedTab != null) this.SelectedTab.BackColor = Color.White;
             }
             catch (Exception) {}
             G.Clear(Color.White);
-            for (int i = 0; i <= this.TabCount - 1; i++)
+            for (var i = 0; i <= this.TabCount - 1; i++)
             {
                 var x2 = new Rectangle(new Point(this.GetTabRect(i).Location.X + 2, this.GetTabRect(i).Location.Y + 17), new Size(this.GetTabRect(i).Width - 1, this.GetTabRect(i).Height - 1));
                 var textrectangle = new Rectangle(x2.Location.X + 12, x2.Location.Y - 21, x2.Width - 20, x2.Height);
@@ -1053,6 +1056,11 @@ namespace PushHub
     internal class ChromeComboBoxLight : ComboBox
     {
         /// <summary>
+        ///     The _x
+        /// </summary>
+        private int _x;
+
+        /// <summary>
         ///     The _B2
         /// </summary>
         private readonly SolidBrush _b2;
@@ -1096,11 +1104,6 @@ namespace PushHub
         ///     The _white
         /// </summary>
         private readonly Color _white = Color.FromArgb(255, 255, 255);
-
-        /// <summary>
-        ///     The _x
-        /// </summary>
-        private int _x;
 
         /// <summary>
         ///     Initializes a new instance of the <see cref="ChromeComboBoxLight" /> class.
@@ -1191,7 +1194,7 @@ namespace PushHub
         /// <param name="e">Ein <see cref="T:System.Windows.Forms.PaintEventArgs" />, das die Ereignisdaten enthält.</param>
         protected override void OnPaint(PaintEventArgs e)
         {
-            Graphics G = e.Graphics;
+            var G = e.Graphics;
             Point[] points = { new Point(this.Width - 15, 9), new Point(this.Width - 6, 9), new Point(this.Width - 11, 14) };
             G.Clear(this.BackColor);
             G.TextRenderingHint = TextRenderingHint.ClearTypeGridFit;
@@ -1271,16 +1274,6 @@ namespace PushHub
     internal class ChromeComboBoxDark : ComboBox
     {
         /// <summary>
-        ///     The _B2
-        /// </summary>
-        private readonly SolidBrush _b2;
-
-        /// <summary>
-        ///     The _B3
-        /// </summary>
-        private readonly SolidBrush _b3;
-
-        /// <summary>
         ///     The _start index
         /// </summary>
         private int _startIndex = 0;
@@ -1289,6 +1282,16 @@ namespace PushHub
         ///     The _x
         /// </summary>
         private int _x;
+
+        /// <summary>
+        ///     The _B2
+        /// </summary>
+        private readonly SolidBrush _b2;
+
+        /// <summary>
+        ///     The _B3
+        /// </summary>
+        private readonly SolidBrush _b3;
 
         /// <summary>
         ///     Initializes a new instance of the <see cref="ChromeComboBoxDark" /> class.
@@ -1429,7 +1432,7 @@ namespace PushHub
         /// <param name="e">Ein <see cref="T:System.Windows.Forms.PaintEventArgs" />, das die Ereignisdaten enthält.</param>
         protected override void OnPaint(PaintEventArgs e)
         {
-            Graphics G = e.Graphics;
+            var G = e.Graphics;
             Point[] points = { new Point(this.Width - 15, 9), new Point(this.Width - 6, 9), new Point(this.Width - 11, 14) };
             G.Clear(this.BackColor);
             G.TextRenderingHint = TextRenderingHint.ClearTypeGridFit;
@@ -1509,6 +1512,16 @@ namespace PushHub
     internal sealed class ChromeComboBoxNormal : ComboBox
     {
         /// <summary>
+        ///     The _ start index
+        /// </summary>
+        private int _startIndex;
+
+        /// <summary>
+        ///     The x
+        /// </summary>
+        private int X;
+
+        /// <summary>
         ///     The b2
         /// </summary>
         private readonly SolidBrush _b2;
@@ -1517,16 +1530,6 @@ namespace PushHub
         ///     The b3
         /// </summary>
         private readonly SolidBrush _b3;
-
-        /// <summary>
-        ///     The x
-        /// </summary>
-        private int X;
-
-        /// <summary>
-        ///     The _ start index
-        /// </summary>
-        private int _startIndex;
 
         /// <summary>
         ///     Initializes a new instance of the <see cref="ChromeComboBoxNormal" /> class.
@@ -1638,7 +1641,7 @@ namespace PushHub
         /// <param name="e">Ein <see cref="T:System.Windows.Forms.PaintEventArgs" />, das die Ereignisdaten enthält.</param>
         protected override void OnPaint(PaintEventArgs e)
         {
-            Graphics G = e.Graphics;
+            var G = e.Graphics;
             var points = new Point[] { new Point(this.Width - 15, 9), new Point(this.Width - 6, 9), new Point(this.Width - 11, 14) };
             G.Clear(this.BackColor);
             G.TextRenderingHint = TextRenderingHint.ClearTypeGridFit;
@@ -1849,6 +1852,50 @@ namespace PushHub
     //------------------
     internal abstract class ThemeContainer154 : ContainerControl
     {
+        private bool _hasShown;
+
+        private void DoAnimation(bool i)
+        {
+            this.OnAnimation();
+            if (i) this.Invalidate();
+        }
+
+        protected override sealed void OnPaint(PaintEventArgs e)
+        {
+            if (this.Width == 0 || this.Height == 0) return;
+
+            if (this._Transparent && this._ControlMode)
+            {
+                this.PaintHook();
+                e.Graphics.DrawImage(this.B, 0, 0);
+            }
+            else
+            {
+                this.G = e.Graphics;
+                this.PaintHook();
+            }
+        }
+
+        protected override void OnHandleDestroyed(EventArgs e)
+        {
+            ThemeShare.RemoveAnimationCallback(this.DoAnimation);
+            base.OnHandleDestroyed(e);
+        }
+
+        private void FormShown(object sender, EventArgs e)
+        {
+            if (this._ControlMode || this._hasShown) return;
+
+            if (this._StartPosition == FormStartPosition.CenterParent || this._StartPosition == FormStartPosition.CenterScreen)
+            {
+                var SB = Screen.PrimaryScreen.Bounds;
+                var CB = this.ParentForm.Bounds;
+                this.ParentForm.Location = new Point(SB.Width / 2 - CB.Width / 2, SB.Height / 2 - CB.Width / 2);
+            }
+
+            this._hasShown = true;
+        }
+
         #region " Initialization "
 
         private Bitmap B;
@@ -1920,50 +1967,6 @@ namespace PushHub
         }
 
         #endregion
-
-        private bool _hasShown;
-
-        private void DoAnimation(bool i)
-        {
-            this.OnAnimation();
-            if (i) this.Invalidate();
-        }
-
-        protected override sealed void OnPaint(PaintEventArgs e)
-        {
-            if (this.Width == 0 || this.Height == 0) return;
-
-            if (this._Transparent && this._ControlMode)
-            {
-                this.PaintHook();
-                e.Graphics.DrawImage(this.B, 0, 0);
-            }
-            else
-            {
-                this.G = e.Graphics;
-                this.PaintHook();
-            }
-        }
-
-        protected override void OnHandleDestroyed(EventArgs e)
-        {
-            ThemeShare.RemoveAnimationCallback(this.DoAnimation);
-            base.OnHandleDestroyed(e);
-        }
-
-        private void FormShown(object sender, EventArgs e)
-        {
-            if (this._ControlMode || this._hasShown) return;
-
-            if (this._StartPosition == FormStartPosition.CenterParent || this._StartPosition == FormStartPosition.CenterScreen)
-            {
-                Rectangle SB = Screen.PrimaryScreen.Bounds;
-                Rectangle CB = this.ParentForm.Bounds;
-                this.ParentForm.Location = new Point(SB.Width / 2 - CB.Width / 2, SB.Height / 2 - CB.Width / 2);
-            }
-
-            this._hasShown = true;
-        }
 
         #region " Size Handling "
 
@@ -2146,7 +2149,7 @@ namespace PushHub
         private void InitializeMessages()
         {
             this._messages[0] = Message.Create(this.Parent.Handle, 161, new IntPtr(2), IntPtr.Zero);
-            for (int I = 1; I <= 8; I++)
+            for (var I = 1; I <= 8; I++)
             {
                 this._messages[I] = Message.Create(this.Parent.Handle, 161, new IntPtr(I + 9), IntPtr.Zero);
             }
@@ -2157,14 +2160,14 @@ namespace PushHub
             if (this.Parent.Width > bounds.Width) this.Parent.Width = bounds.Width;
             if (this.Parent.Height > bounds.Height) this.Parent.Height = bounds.Height;
 
-            int X = this.Parent.Location.X;
-            int Y = this.Parent.Location.Y;
+            var X = this.Parent.Location.X;
+            var Y = this.Parent.Location.Y;
 
             if (X < bounds.X) X = bounds.X;
             if (Y < bounds.Y) Y = bounds.Y;
 
-            int Width = bounds.X + bounds.Width;
-            int Height = bounds.Y + bounds.Height;
+            var Width = bounds.X + bounds.Width;
+            var Height = bounds.Y + bounds.Height;
 
             if (X + this.Parent.Width > Width) X = Width - this.Parent.Width;
             if (Y + this.Parent.Height > Height) Y = Height - this.Parent.Height;
@@ -2403,7 +2406,7 @@ namespace PushHub
             get
             {
                 var T = new List<Bloom>();
-                Dictionary<string, Color>.Enumerator E = this.Items.GetEnumerator();
+                var E = this.Items.GetEnumerator();
 
                 while (E.MoveNext())
                 {
@@ -2414,7 +2417,7 @@ namespace PushHub
             }
             set
             {
-                foreach (Bloom B in value)
+                foreach (var B in value)
                 {
                     if (this.Items.ContainsKey(B.Name)) this.Items[B.Name] = B.Value;
                 }
@@ -2433,12 +2436,12 @@ namespace PushHub
                 if (value == this._Customization) return;
 
                 byte[] Data = null;
-                Bloom[] Items = this.Colors;
+                var Items = this.Colors;
 
                 try
                 {
                     Data = Convert.FromBase64String(value);
-                    for (int I = 0; I <= Items.Length - 1; I++)
+                    for (var I = 0; I <= Items.Length - 1; I++)
                     {
                         Items[I].Value = Color.FromArgb(BitConverter.ToInt32(Data, I * 4));
                     }
@@ -2614,7 +2617,7 @@ namespace PushHub
         {
             var M = new MemoryStream(this.Items.Count * 4);
 
-            foreach (Bloom B in this.Colors)
+            foreach (var B in this.Colors)
             {
                 M.Write(BitConverter.GetBytes(B.Value.ToArgb()), 0, 4);
             }
@@ -3028,6 +3031,34 @@ namespace PushHub
 
     internal abstract class ThemeControl154 : Control
     {
+        private void DoAnimation(bool i)
+        {
+            this.OnAnimation();
+            if (i) this.Invalidate();
+        }
+
+        protected override sealed void OnPaint(PaintEventArgs e)
+        {
+            if (this.Width == 0 || this.Height == 0) return;
+
+            if (this._Transparent)
+            {
+                this.PaintHook();
+                e.Graphics.DrawImage(this.B, 0, 0);
+            }
+            else
+            {
+                this.G = e.Graphics;
+                this.PaintHook();
+            }
+        }
+
+        protected override void OnHandleDestroyed(EventArgs e)
+        {
+            ThemeShare.RemoveAnimationCallback(this.DoAnimation);
+            base.OnHandleDestroyed(e);
+        }
+
         #region " Initialization "
 
         protected Bitmap B;
@@ -3079,34 +3110,6 @@ namespace PushHub
         }
 
         #endregion
-
-        private void DoAnimation(bool i)
-        {
-            this.OnAnimation();
-            if (i) this.Invalidate();
-        }
-
-        protected override sealed void OnPaint(PaintEventArgs e)
-        {
-            if (this.Width == 0 || this.Height == 0) return;
-
-            if (this._Transparent)
-            {
-                this.PaintHook();
-                e.Graphics.DrawImage(this.B, 0, 0);
-            }
-            else
-            {
-                this.G = e.Graphics;
-                this.PaintHook();
-            }
-        }
-
-        protected override void OnHandleDestroyed(EventArgs e)
-        {
-            ThemeShare.RemoveAnimationCallback(this.DoAnimation);
-            base.OnHandleDestroyed(e);
-        }
 
         #region " Size Handling "
 
@@ -3297,7 +3300,7 @@ namespace PushHub
             get
             {
                 var T = new List<Bloom>();
-                Dictionary<string, Color>.Enumerator E = this.Items.GetEnumerator();
+                var E = this.Items.GetEnumerator();
 
                 while (E.MoveNext())
                 {
@@ -3308,7 +3311,7 @@ namespace PushHub
             }
             set
             {
-                foreach (Bloom B in value)
+                foreach (var B in value)
                 {
                     if (this.Items.ContainsKey(B.Name)) this.Items[B.Name] = B.Value;
                 }
@@ -3327,12 +3330,12 @@ namespace PushHub
                 if (value == this._Customization) return;
 
                 byte[] Data = null;
-                Bloom[] Items = this.Colors;
+                var Items = this.Colors;
 
                 try
                 {
                     Data = Convert.FromBase64String(value);
-                    for (int I = 0; I <= Items.Length - 1; I++)
+                    for (var I = 0; I <= Items.Length - 1; I++)
                     {
                         Items[I].Value = Color.FromArgb(BitConverter.ToInt32(Data, I * 4));
                     }
@@ -3432,7 +3435,7 @@ namespace PushHub
         {
             var M = new MemoryStream(this.Items.Count * 4);
 
-            foreach (Bloom B in this.Colors)
+            foreach (var B in this.Colors)
             {
                 M.Write(BitConverter.GetBytes(B.Value.ToArgb()), 0, 4);
             }
@@ -3860,7 +3863,7 @@ namespace PushHub
 
             lock (Callbacks)
             {
-                for (int I = 0; I <= Callbacks.Count - 1; I++)
+                for (var I = 0; I <= Callbacks.Count - 1; I++)
                 {
                     Callbacks[I].Invoke(Invalidate);
                 }
@@ -3991,7 +3994,7 @@ namespace PushHub
             if (this._enabled) return;
 
             this._timerCallback = callback;
-            bool success = CreateTimerQueueTimer(ref this._handle, IntPtr.Zero, this._timerCallback, IntPtr.Zero, dueTime, period, 0);
+            var success = CreateTimerQueueTimer(ref this._handle, IntPtr.Zero, this._timerCallback, IntPtr.Zero, dueTime, period, 0);
 
             if (!success) this.ThrowNewException("CreateTimerQueueTimer");
             this._enabled = success;
@@ -4000,7 +4003,7 @@ namespace PushHub
         public void Delete()
         {
             if (!this._enabled) return;
-            bool success = DeleteTimerQueueTimer(IntPtr.Zero, this._handle, IntPtr.Zero);
+            var success = DeleteTimerQueueTimer(IntPtr.Zero, this._handle, IntPtr.Zero);
 
             if (!success && Marshal.GetLastWin32Error() != 997) this.ThrowNewException("DeleteTimerQueueTimer");
 

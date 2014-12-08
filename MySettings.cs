@@ -1,4 +1,5 @@
 ﻿#region License
+
 // Author: Moreno Sint Hill alias Mirabis
 // Created on: 27/10/2013                
 // Last Edited on: 01/12/2014
@@ -29,7 +30,9 @@
 // The views and conclusions contained in the software and documentation are those
 // of the authors and should not be interpreted as representing official policies, 
 // either expressed or implied, of the FreeBSD Project.
+
 #endregion
+
 using DefaultValue = Styx.Helpers.DefaultValueAttribute;
 
 namespace PushHub
@@ -39,12 +42,14 @@ namespace PushHub
 
     using PushHub.Externals;
 
-    using Styx;
     using Styx.Common;
     using Styx.Helpers;
 
     internal class MySettings : Settings
     {
+        [Setting, Browsable(false), DefaultValue(true)]
+        public bool CheckTriggerList { get; set; }
+
         #region Default
 
         private static MySettings _instance;
@@ -57,9 +62,6 @@ namespace PushHub
         }
 
         #endregion
-
-        [Setting, Browsable(false), DefaultValue(true)]
-        public bool CheckTriggerList { get; set; }
 
         #region PushoverSettings
 
@@ -145,7 +147,6 @@ namespace PushHub
 
         #region  Bot Events
 
-
         [Setting, DefaultValue(true), Browsable(false)]
         public bool ON_Start { get; set; }
 
@@ -210,6 +211,9 @@ namespace PushHub
 
         [Setting, DefaultValue(true), Browsable(false)]
         public bool ON_Gamemastermessage { get; set; }
+
+        [Setting, DefaultValue(true), Browsable(false)]
+        public bool ON_Disconnect { get; set; }
 
         [Setting, DefaultValue(true), Browsable(false)]
         public bool ON_Trademessage { get; set; }

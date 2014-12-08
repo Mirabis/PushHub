@@ -44,6 +44,7 @@
             this.ON_Stop = new PushHub.ChromeCheckbox();
             this.ON_Start = new PushHub.ChromeCheckbox();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
+            this.ON_Disconnect = new PushHub.ChromeCheckbox();
             this.ON_Emote = new PushHub.ChromeCheckbox();
             this.ON_BGJoined = new PushHub.ChromeCheckbox();
             this.ON_BGLeft = new PushHub.ChromeCheckbox();
@@ -51,6 +52,7 @@
             this.ON_Death = new PushHub.ChromeCheckbox();
             this.ON_LevelUp = new PushHub.ChromeCheckbox();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.label1 = new System.Windows.Forms.Label();
             this.ON_Addon = new PushHub.ChromeCheckbox();
             this.ON_Yell = new PushHub.ChromeCheckbox();
             this.ON_RaidMessage = new PushHub.ChromeCheckbox();
@@ -67,7 +69,6 @@
             this.sGrid = new System.Windows.Forms.PropertyGrid();
             this.tabPage3 = new System.Windows.Forms.TabPage();
             this.tbChangelog = new System.Windows.Forms.RichTextBox();
-            this.label1 = new System.Windows.Forms.Label();
             this.chromeTabcontrol1.SuspendLayout();
             this.tabPage1.SuspendLayout();
             this.groupBox3.SuspendLayout();
@@ -206,9 +207,9 @@
             this.groupBox3.Controls.Add(this.ON_MapChanged);
             this.groupBox3.Controls.Add(this.ON_Stop);
             this.groupBox3.Controls.Add(this.ON_Start);
-            this.groupBox3.Location = new System.Drawing.Point(187, 160);
+            this.groupBox3.Location = new System.Drawing.Point(187, 183);
             this.groupBox3.Name = "groupBox3";
-            this.groupBox3.Size = new System.Drawing.Size(175, 155);
+            this.groupBox3.Size = new System.Drawing.Size(175, 132);
             this.groupBox3.TabIndex = 3;
             this.groupBox3.TabStop = false;
             this.groupBox3.Text = "Bot Events";
@@ -285,6 +286,7 @@
             // 
             // groupBox2
             // 
+            this.groupBox2.Controls.Add(this.ON_Disconnect);
             this.groupBox2.Controls.Add(this.ON_Emote);
             this.groupBox2.Controls.Add(this.ON_BGJoined);
             this.groupBox2.Controls.Add(this.ON_BGLeft);
@@ -293,10 +295,24 @@
             this.groupBox2.Controls.Add(this.ON_LevelUp);
             this.groupBox2.Location = new System.Drawing.Point(187, 3);
             this.groupBox2.Name = "groupBox2";
-            this.groupBox2.Size = new System.Drawing.Size(175, 151);
+            this.groupBox2.Size = new System.Drawing.Size(175, 193);
             this.groupBox2.TabIndex = 2;
             this.groupBox2.TabStop = false;
             this.groupBox2.Text = "Player Events";
+            // 
+            // ON_Disconnect
+            // 
+            this.ON_Disconnect.Customization = "7e3t//Ly8v/r6+v/5ubm/+vr6//f39//p6en/zw8PP8=";
+            this.ON_Disconnect.Font = new System.Drawing.Font("Segoe UI", 9F);
+            this.ON_Disconnect.Image = null;
+            this.ON_Disconnect.Location = new System.Drawing.Point(9, 157);
+            this.ON_Disconnect.Name = "ON_Disconnect";
+            this.ON_Disconnect.NoRounding = false;
+            this.ON_Disconnect.Size = new System.Drawing.Size(160, 17);
+            this.ON_Disconnect.TabIndex = 15;
+            this.ON_Disconnect.Text = "on Disconnect";
+            this.ON_Disconnect.Transparent = false;
+            this.ON_Disconnect.CheckedChanged += new PushHub.ChromeCheckbox.CheckedChangedEventHandler(this.ON_Disconnect_CheckedChanged);
             // 
             // ON_Emote
             // 
@@ -402,6 +418,16 @@
             this.groupBox1.TabIndex = 1;
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Chat Events";
+            // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.ForeColor = System.Drawing.Color.DarkCyan;
+            this.label1.Location = new System.Drawing.Point(3, 296);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(110, 13);
+            this.label1.TabIndex = 12;
+            this.label1.Text = "Those can be filtered.";
             // 
             // ON_Addon
             // 
@@ -611,16 +637,6 @@
             this.tbChangelog.TabIndex = 0;
             this.tbChangelog.Text = "";
             // 
-            // label1
-            // 
-            this.label1.AutoSize = true;
-            this.label1.ForeColor = System.Drawing.Color.DarkCyan;
-            this.label1.Location = new System.Drawing.Point(3, 296);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(110, 13);
-            this.label1.TabIndex = 12;
-            this.label1.Text = "Those can be filtered.";
-            // 
             // UI
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -684,5 +700,6 @@
         private System.Windows.Forms.PropertyGrid sGrid;
         private System.Windows.Forms.RichTextBox tbChangelog;
         private System.Windows.Forms.Label label1;
+        private ChromeCheckbox ON_Disconnect;
     }
 }

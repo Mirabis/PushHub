@@ -56,6 +56,7 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Externals\LuaEventHandler.cs" />
     <Compile Include="MySettings.cs" />
     <Compile Include="Externals\BetterWebClient.cs">
       <SubType>Component</SubType>
