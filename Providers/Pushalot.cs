@@ -79,11 +79,11 @@ namespace PushHub.Providers
                     values["Source"] = "PushHub";
                     if (!string.IsNullOrEmpty(title)) values["Title"] = title.Truncate(250);
 
-                    if (!string.IsNullOrEmpty(message)) values["Body"] = message;
+                    values["Body"] = message ?? "error"; //Required
 
-                    if (!string.IsNullOrEmpty(url)) values["Link"] = url.Truncate(1000);
+                    if (!string.IsNullOrEmpty(url) && Uri.IsWellFormedUriString(url, UriKind.Absolute)) values["Link"] = url.Truncate(1000);
 
-                    if (!string.IsNullOrEmpty(urlTitle)) values["LinkTitle"] = urlTitle.Truncate(100);
+                    if (Uri.IsWellFormedUriString(url, UriKind.Absolute)) values["LinkTitle"] = (urlTitle.Truncate(100)) ?? "notitlespecified";
 
                     if (IsSilent) values["IsSilent"] = "True";
                     if (IsImportant) values["IsImportant"] = "True";

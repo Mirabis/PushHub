@@ -74,14 +74,17 @@ namespace PushHub.Providers
 
                     var authEncoded = Convert.ToBase64String(Encoding.UTF8.GetBytes(MySettings.Instance.Pushbullet_Token + ":"));
                     values["AuthorizationToken"] = MySettings.Instance.Pushbullet_Token;
-                    values["type"] = "link"; // Title, url and body
-                    var device = MySettings.Instance.Pushbullet_Device;
+                    values["type"] = Uri.IsWellFormedUriString(url, UriKind.Absolute) ? "link" : "note"; // Title, url and body
+                    string device = MySettings.Instance.Pushbullet_Device;
                     if (!string.IsNullOrEmpty(device)) values["device_iden"] = device.Truncate(250);
-                    if (!string.IsNullOrEmpty(title)) values["title "] = title.Truncate(250);
 
-                    if (!string.IsNullOrEmpty(message)) values["body "] = message;
 
-                    if (!string.IsNullOrEmpty(url)) values["link"] = url.Truncate(1000);
+                    if (!string.IsNullOrEmpty(url) && Uri.IsWellFormedUriString(url, UriKind.Absolute)) values["url"] = url.Truncate(1000);
+
+                    if (!string.IsNullOrEmpty(title)) values["title"] = title.Truncate(250);
+
+                    if (!string.IsNullOrEmpty(message)) values["body"] = message;
+
                     client.Headers[HttpRequestHeader.Authorization] = string.Format("Basic {0}", authEncoded);
                     client.Headers[HttpRequestHeader.Accept] = "application/json";
                     client.Headers[HttpRequestHeader.ContentType] = "application/x-www-form-urlencoded";

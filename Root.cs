@@ -83,7 +83,7 @@ namespace PushHub
         /// </summary>
         public override Version Version
         {
-            get { return new Version(2, 0, 2, 0); }
+            get { return new Version(2, 0, 3, 0); }
         }
 
         public override bool WantButton
@@ -118,7 +118,6 @@ namespace PushHub
             Chat.Emote -= EmoteMessage;
             BotEvents.Player.OnLevelUp -= OnLevel;
             BotEvents.Player.OnPlayerDied -= OnDead;
-            BotEvents.Player.OnLevelUp -= OnLevel;
             Chat.Channel -= TradeMessage;
             Chat.Say -= SayMessage;
             Chat.Whisper -= WhisperMessage;
@@ -703,7 +702,7 @@ namespace PushHub
             get { return MySettings.Instance; }
         }
 
-        internal static void SendNotification(string message, string title, string url = "")
+        internal static void SendNotification(string message, string title, string url = null)
         {
             if (MySettings.Instance.Push_Boxcar2) new Task(() => BoxCar2.PushNotification(message, title, url)).Start();
             if (MySettings.Instance.Push_NMY) new Task(() => NotifyMyAndroid.PushNotification(message, title, url)).Start();

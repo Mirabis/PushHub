@@ -1,4 +1,13 @@
-﻿[08/12/2014 - Version: 2.0.2.0 - Type: Release]
+﻿[03/01/2014 - Version: 2.0.3.0 - Type: Release]
++ Fixed Pushalot coming up empty
++ Pushalot now checks if URL is wellformed
+
+
+[18/12/2014 - Version: 2.0.2.1 - Type: Release]
++ Fixed url for PushBullet
+
+
+[08/12/2014 - Version: 2.0.2.0 - Type: Release]
 + Fixed the concurrent I/O error
 + Leaning more onto the garbage collector
 + Added OnDisconnect
