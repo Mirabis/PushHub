@@ -52,7 +52,12 @@ namespace PushHub.Interface
             Closing += OnClosing;
         }
 
-        private void OnClosing(object sender, CancelEventArgs cancelEventArgs) { MySettings.Instance.Save(); }
+        private void OnClosing(object sender, CancelEventArgs cancelEventArgs)
+        {
+            MySettings.Instance.Save();
+            Root.RemoveEvents();
+            Root.RegisterEvents();
+        }
 
         private void addTrigger_Click(object sender, EventArgs e)
         {

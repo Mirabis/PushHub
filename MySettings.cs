@@ -86,7 +86,7 @@ namespace PushHub
         [Setting, DefaultValue(false), Category("BoxCar2"), DisplayName("Enable"), Description("Use this provider to send push notifications")]
         public bool Push_Boxcar2 { get; set; }
 
-        [Setting, DefaultValue(""), Category("BoxCar2"), DisplayName("API Key"), Description("The authentication key.")]
+        [Setting, DefaultValue(""), Category("BoxCar2"), DisplayName("Access Token"), Description("The Authentication token you can retrieve from http://help.boxcar.io/knowledgebase/articles/314474-how-to-get-my-boxcar-access-token")]
         public string BoxCar2_Token { get; set; }
 
         [Setting, DefaultValue(""), Category("BoxCar2"), DisplayName("Device Token"), Description("For iOS, this is the device token. For Android, this is the device registration ID.")]

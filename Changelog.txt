@@ -1,4 +1,11 @@
-﻿[03/01/2014 - Version: 2.0.3.0 - Type: Release]
+﻿[07/01/2014 - Version: 2.0.3.1 - Type: Release]
++ Renamed BoxCar api key to Access Token to avoid confusion
++ Merged a fix submitted by Sosnooley
++ No longer adding the characters name on filters when it already exists
++ Form onClosing will now re-register events
+
+
+[03/01/2014 - Version: 2.0.3.0 - Type: Release]
 + Fixed Pushalot coming up empty
 + Pushalot now checks if URL is wellformed
 

@@ -83,7 +83,7 @@ namespace PushHub
         /// </summary>
         public override Version Version
         {
-            get { return new Version(2, 0, 3, 0); }
+            get { return new Version(2, 0, 3, 1); }
         }
 
         public override bool WantButton
@@ -97,6 +97,7 @@ namespace PushHub
         public override void OnEnable()
         {
             Logging.Write("[PushHub] -- Adding character name to Filter list");
+            if (!Filter.Contains(StyxWoW.Me.Name))
             Filter.Add(StyxWoW.Me.Name);
             Logging.Write("[PushHub] -- Registering Event listeners");
             RegisterEvents();
@@ -133,7 +134,6 @@ namespace PushHub
             Chat.HordeBattleground -= BGMessage;
             BotEvents.Profile.OnNewProfileLoaded -= OnNewProfile;
             BotEvents.Profile.OnNewOuterProfileLoaded -= OnNewProfile;
-            BotEvents.Questing.OnQuestAccepted -= OnQuestAccept;
             BotEvents.Player.OnMapChanged -= OnMapChanged;
             BotEvents.Battleground.OnBattlegroundLeft -= BgLeft;
             BotEvents.Battleground.OnBattlegroundEntered -= BGEntered;
@@ -190,14 +190,14 @@ namespace PushHub
         /// <summary>
         ///     Registers our BotEvents
         /// </summary>
-        private static void RegisterEvents()
+        internal static void RegisterEvents()
         {
             if (ST.ON_ProfileChanged)
             {
                 BotEvents.Profile.OnNewProfileLoaded += OnNewProfile;
                 BotEvents.Profile.OnNewOuterProfileLoaded += OnNewProfile;
             }
-            if (ST.ON_QuestAccepted) BotEvents.Questing.OnQuestAccepted += OnQuestAccept;
+            if (ST.ON_QuestAccepted) LuaEventHandler.Register("QUEST_ACCEPTED", OnQuestAccept);
             if (ST.ON_MapChanged) BotEvents.Player.OnMapChanged += OnMapChanged;
             if (ST.ON_BGLeft) BotEvents.Battleground.OnBattlegroundLeft += BgLeft;
             if (ST.ON_BGJoined) BotEvents.Battleground.OnBattlegroundEntered += BGEntered;
@@ -239,14 +239,14 @@ namespace PushHub
         /// <summary>
         ///     Resets all the Events
         /// </summary>
-        private static void RemoveEvents()
+        internal static void RemoveEvents()
         {
             if (!ST.ON_ProfileChanged)
             {
                 BotEvents.Profile.OnNewProfileLoaded -= OnNewProfile;
                 BotEvents.Profile.OnNewOuterProfileLoaded -= OnNewProfile;
             }
-            if (!ST.ON_QuestAccepted) BotEvents.Questing.OnQuestAccepted -= OnQuestAccept;
+            if (!ST.ON_QuestAccepted) LuaEventHandler.UnRegister("QUEST_ACCEPTED", OnQuestAccept);
             if (!ST.ON_MapChanged) BotEvents.Player.OnMapChanged -= OnMapChanged;
             if (!ST.ON_BGLeft) BotEvents.Battleground.OnBattlegroundLeft -= BgLeft;
             if (!ST.ON_BGJoined) BotEvents.Battleground.OnBattlegroundEntered -= BGEntered;
@@ -629,8 +629,10 @@ namespace PushHub
             SendNotification(message, title);
         }
 
-        private static void OnQuestAccept(Quest quest)
+
+        private static void OnQuestAccept(object sender, LuaEventArgs args)
         {
+            var quest = Quest.FromId((uint)(double)args.Args[1]);
             var title = FormatIt( "Quest Accepted: {0}", quest.Name);
             var message = FormatIt( "Description: {0}   \n  RequiredLevel: {1} \n  RewardMoney: {2} \n RewardXP: {3}.", quest.Description, quest.RequiredLevel, quest.RewardMoney, quest.RewardXp);
             var url = FormatIt( "http://www.wowhead.com/quest={0}", quest.Id);
