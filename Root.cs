@@ -133,7 +133,6 @@ namespace PushHub
             Chat.HordeBattleground -= BGMessage;
             BotEvents.Profile.OnNewProfileLoaded -= OnNewProfile;
             BotEvents.Profile.OnNewOuterProfileLoaded -= OnNewProfile;
-            BotEvents.Questing.OnQuestAccepted -= OnQuestAccept;
             BotEvents.Player.OnMapChanged -= OnMapChanged;
             BotEvents.Battleground.OnBattlegroundLeft -= BgLeft;
             BotEvents.Battleground.OnBattlegroundEntered -= BGEntered;
@@ -197,7 +196,7 @@ namespace PushHub
                 BotEvents.Profile.OnNewProfileLoaded += OnNewProfile;
                 BotEvents.Profile.OnNewOuterProfileLoaded += OnNewProfile;
             }
-            if (ST.ON_QuestAccepted) BotEvents.Questing.OnQuestAccepted += OnQuestAccept;
+            if (ST.ON_QuestAccepted) LuaEventHandler.Register("QUEST_ACCEPTED", OnQuestAccept);
             if (ST.ON_MapChanged) BotEvents.Player.OnMapChanged += OnMapChanged;
             if (ST.ON_BGLeft) BotEvents.Battleground.OnBattlegroundLeft += BgLeft;
             if (ST.ON_BGJoined) BotEvents.Battleground.OnBattlegroundEntered += BGEntered;
@@ -246,7 +245,7 @@ namespace PushHub
                 BotEvents.Profile.OnNewProfileLoaded -= OnNewProfile;
                 BotEvents.Profile.OnNewOuterProfileLoaded -= OnNewProfile;
             }
-            if (!ST.ON_QuestAccepted) BotEvents.Questing.OnQuestAccepted -= OnQuestAccept;
+            if (!ST.ON_QuestAccepted) LuaEventHandler.UnRegister("QUEST_ACCEPTED", OnQuestAccept);
             if (!ST.ON_MapChanged) BotEvents.Player.OnMapChanged -= OnMapChanged;
             if (!ST.ON_BGLeft) BotEvents.Battleground.OnBattlegroundLeft -= BgLeft;
             if (!ST.ON_BGJoined) BotEvents.Battleground.OnBattlegroundEntered -= BGEntered;
@@ -629,8 +628,9 @@ namespace PushHub
             SendNotification(message, title);
         }
 
-        private static void OnQuestAccept(Quest quest)
+        private static void OnQuestAccept(object sender, LuaEventArgs args)
         {
+            var quest = Quest.FromId((uint) (double) args.Args[1]);
             var title = FormatIt( "Quest Accepted: {0}", quest.Name);
             var message = FormatIt( "Description: {0}   \n  RequiredLevel: {1} \n  RewardMoney: {2} \n RewardXP: {3}.", quest.Description, quest.RequiredLevel, quest.RewardMoney, quest.RewardXp);
             var url = FormatIt( "http://www.wowhead.com/quest={0}", quest.Id);
