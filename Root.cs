@@ -704,8 +704,16 @@ namespace PushHub
             get { return MySettings.Instance; }
         }
 
+        private static readonly CapacityQueue<string> LogQueue = new CapacityQueue<string>(2);
+
         internal static void SendNotification(string message, string title, string url = null)
         {
+            if (LogQueue.Contains(string.Format("{0}-{1}", message,title)))
+            {
+                return;
+            }
+
+            LogQueue.Enqueue(string.Format("{0}-{1}", message, title));
             if (MySettings.Instance.Push_Boxcar2) new Task(() => BoxCar2.PushNotification(message, title, url)).Start();
             if (MySettings.Instance.Push_NMY) new Task(() => NotifyMyAndroid.PushNotification(message, title, url)).Start();
             if (MySettings.Instance.Push_Pushalot) new Task(() => Pushalot.PushNotification(message, title, url, title, MySettings.Instance.Pushalot_Silent, MySettings.Instance.Pushalot_Important)).Start();
