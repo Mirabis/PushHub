@@ -574,7 +574,7 @@ namespace PushHub
         {
             try
             {
-                  string title = FormatIt( "Achievemnt Earned : {0}", args.EventName);
+                  string title = FormatIt( "Achievement Earned : {0}", args.EventName);
                   SendNotification(FormatIt("achievementID: {0}", args.Args[0]), title, string.Format("http://www.wowhead.com/achievement={0}", args.Args[0]));
             }
             catch (Exception ex)
@@ -642,14 +642,14 @@ namespace PushHub
         private static void OnMapChanged(BotEvents.Player.MapChangedEventArgs args)
         {
             var title = FormatIt( "Map Changed to {0}", args.NewMapName);
-            const string message = "Your Honorbuddy instance has changed maps. From args.OldMapName to args.NewMapName";
+            const string message = "Your Honorbuddy instance has changed maps from args.OldMapName to args.NewMapName";
             SendNotification(message, title);
         }
 
         private static void BGEntered(BattlegroundType type)
         {
             var title = FormatIt( "Battleground ({0}) Entered", type);
-            const string message = "Your Honorbuddy instance has joined a battleground.on map args.NewMapName";
+            const string message = "Your Honorbuddy instance has joined a battleground on map args.NewMapName";
             SendNotification(message, title);
         }
 
@@ -691,7 +691,7 @@ namespace PushHub
         private static void OnLevel(BotEvents.Player.LevelUpEventArgs args)
         {
             const string title = "Level Up";
-            var message = FormatIt( "Leveled up from {0} to {1}", args.OldLevel, args.NewLevel);
+            var message = FormatIt( "I Leveled up from {0} to {1}", args.OldLevel, args.NewLevel);
             SendNotification(message, title);
         }
 
