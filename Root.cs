@@ -574,7 +574,7 @@ namespace PushHub
         {
             try
             {
-                  string title = FormatIt( "Achievemnt Earned : {0}", args.EventName);
+                  string title = FormatIt( "Achievement Earned : {0}", args.EventName);
                   SendNotification(FormatIt("achievementID: {0}", args.Args[0]), title, string.Format("http://www.wowhead.com/achievement={0}", args.Args[0]));
             }
             catch (Exception ex)
@@ -597,7 +597,7 @@ namespace PushHub
         {
             try
             {
-                var title = FormatIt( "GameMaster {0} has sent u a message", args.Args[1]);
+                var title = FormatIt( "GameMaster {0} has sent you a message", args.Args[1]);
                 var message = (string)args.Args[0];
 
                 SendNotification(message, title);
@@ -625,7 +625,7 @@ namespace PushHub
         private static void OnNewProfile(BotEvents.Profile.NewProfileLoadedEventArgs args)
         {
             var title = FormatIt( "New Profile Loaded: {0}", args.NewProfile.Name);
-            var message = FormatIt( "Ur Honorbuddy instance has changed profile from {0} to {1}.", args.OldProfile.Name, args.NewProfile.Name);
+            var message = FormatIt( "Your Honorbuddy instance has changed profile from {0} to {1}.", args.OldProfile.Name, args.NewProfile.Name);
             SendNotification(message, title);
         }
 
@@ -642,21 +642,21 @@ namespace PushHub
         private static void OnMapChanged(BotEvents.Player.MapChangedEventArgs args)
         {
             var title = FormatIt( "Map Changed to {0}", args.NewMapName);
-            const string message = "Ur Honorbuddy instance has changed maps.";
+            const string message = "Your Honorbuddy instance has changed maps from args.OldMapName to args.NewMapName";
             SendNotification(message, title);
         }
 
         private static void BGEntered(BattlegroundType type)
         {
             var title = FormatIt( "Battleground ({0}) Entered", type);
-            const string message = "Ur Honorbuddy instance has joined a battleground.";
+            const string message = "Your Honorbuddy instance has joined a battleground on map args.NewMapName";
             SendNotification(message, title);
         }
 
         private static void BgLeft(EventArgs args)
         {
             const string title = "Battleground Left";
-            const string message = "Ur Honorbuddy instance has left a battleground.";
+            const string message = "Your Honorbuddy instance has left a battleground.";
             SendNotification(message, title);
         }
 
@@ -677,21 +677,21 @@ namespace PushHub
         private static void OnStop(EventArgs args)
         {
             const string title = "Honorbuddy Stopped";
-            const string message = "Ur Honorbuddy instance has stopped";
+            const string message = "Your Honorbuddy instance has stopped";
             SendNotification(message, title);
         }
 
         private static void OnStart(EventArgs args)
         {
             const string title = "Honorbuddy Started";
-            const string message = "Ur Honorbuddy instance has started";
+            const string message = "Your Honorbuddy instance has started";
             SendNotification(message, title);
         }
 
         private static void OnLevel(BotEvents.Player.LevelUpEventArgs args)
         {
             const string title = "Level Up";
-            var message = FormatIt( "Leveled up from {0} to {1}", args.OldLevel, args.NewLevel);
+            var message = FormatIt( "I Leveled up from {0} to {1}", args.OldLevel, args.NewLevel);
             SendNotification(message, title);
         }
 
@@ -732,12 +732,12 @@ namespace PushHub
         {
             try
             {
-                return format == null ? "something went wrong." : string.Format(format, args).Replace("\n",Environment.NewLine);
+                return format == null ? "Something went wrong." : string.Format(format, args).Replace("\n",Environment.NewLine);
             }
             catch (Exception ex)
             {
                 Logger.FailLog("Exception Thrown: Inner => {0}   Message=> {1}",ex.InnerException,ex.Message);
-                return "something went wrong.";
+                return "Something went wrong.";
             }
            
         }
