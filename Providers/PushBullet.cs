@@ -66,8 +66,10 @@ namespace PushHub.Providers
         /// <returns>Task&lt;System.String&gt;.</returns>
         public static async Task<string> PushNotification(string message, string title = null, string url = null)
         {
+            string response = string.Empty;
             try
             {
+             
                 using (var client = new BetterWebClient())
                 {
                     var values = new NameValueCollection();
@@ -76,6 +78,7 @@ namespace PushHub.Providers
                     values["AuthorizationToken"] = MySettings.Instance.Pushbullet_Token;
                     values["type"] = Uri.IsWellFormedUriString(url, UriKind.Absolute) ? "link" : "note"; // Title, url and body
                     string device = MySettings.Instance.Pushbullet_Device;
+
                     if (!string.IsNullOrEmpty(device)) values["device_iden"] = device.Truncate(250);
 
 
@@ -88,14 +91,15 @@ namespace PushHub.Providers
                     client.Headers[HttpRequestHeader.Authorization] = string.Format("Basic {0}", authEncoded);
                     client.Headers[HttpRequestHeader.Accept] = "application/json";
                     client.Headers[HttpRequestHeader.ContentType] = "application/x-www-form-urlencoded";
-                    var responseArray = await client.UploadValuesTaskAsync(API_URL, values);
-                    return Encoding.ASCII.GetString(responseArray);
+                    byte[] responseArray = await client.UploadValuesTaskAsync(API_URL, values);
+                    response = Encoding.ASCII.GetString(responseArray);
                 }
+                return response;
             }
             catch (WebException e)
             {
                 if (e.Status == WebExceptionStatus.NameResolutionFailure) Logger.FailLog("{0}:Bad domain name", ProviderName);
-                if (e.Status == WebExceptionStatus.ProtocolError) Logger.FailLog("{0} Notification failed, Status Code: {1}. Description:  {2}", ProviderName, ((HttpWebResponse)e.Response).StatusCode, ((HttpWebResponse)e.Response).StatusDescription);
+                if (e.Status == WebExceptionStatus.ProtocolError) Logger.FailLog("{0} Notification failed, Status Code: {1}. Description:  {2}  - Response:{3}", ProviderName, ((HttpWebResponse)e.Response).StatusCode, ((HttpWebResponse)e.Response).StatusDescription, response);
                 return null;
             }
             catch (Exception ex)

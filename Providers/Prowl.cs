@@ -79,7 +79,7 @@ namespace PushHub.Providers
 
                     if (!string.IsNullOrEmpty(message)) values["description"] = message.Truncate(10000);
 
-                    if (!string.IsNullOrEmpty(url)) values["url"] = url.Truncate(512);
+                    if (!string.IsNullOrEmpty(url) && Uri.IsWellFormedUriString(url, UriKind.Absolute) ) values["url"] = url.Truncate(512);
                     client.Headers[HttpRequestHeader.ContentType] = "application/x-www-form-urlencoded";
                     var responseArray = await client.UploadValuesTaskAsync(API_URL, "POST", values);
                     return Encoding.ASCII.GetString(responseArray);

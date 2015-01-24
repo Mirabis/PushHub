@@ -83,7 +83,7 @@ namespace PushHub
         /// </summary>
         public override Version Version
         {
-            get { return new Version(2, 0, 3, 1); }
+            get { return new Version(2, 0, 3,3); }
         }
 
         public override bool WantButton

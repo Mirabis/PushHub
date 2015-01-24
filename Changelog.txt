@@ -1,4 +1,10 @@
-﻿[13/01/2014 - Version: 2.0.3.2 - Type: Release]
+﻿[24/01/2014 - Version: 2.0.3.3 - Type: Release]
++ Merged community submissions
++ Few more checks to get error response on PushBullet and Pushover
+
+
+
+[13/01/2014 - Version: 2.0.3.2 - Type: Release]
 + Fix for double notifications ,using a queue
 
 [07/01/2014 - Version: 2.0.3.1 - Type: Release]

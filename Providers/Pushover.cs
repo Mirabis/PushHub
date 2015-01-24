@@ -68,6 +68,7 @@ namespace PushHub.Providers
         /// <returns>Task&lt;System.String&gt;.</returns>
         public static async Task<string> PushNotification(string message, string title = null, string url = null, string urlTitle = null)
         {
+            string response = string.Empty;
             try
             {
                 var editedtitle = string.Format("{0}: {1}", "PushHub", title);
@@ -78,8 +79,8 @@ namespace PushHub.Providers
                     var device = MySettings.Instance.Pushover_Device;
                     if (!string.IsNullOrEmpty(device)) parameters.Add("device", device);
                     if (!string.IsNullOrEmpty(title)) parameters.Add("title", editedtitle);
-                    if (!string.IsNullOrEmpty(url)) parameters.Add("url", url);
-                    if (!string.IsNullOrEmpty(urlTitle)) parameters.Add("urlTitle", urlTitle);
+                    if (!string.IsNullOrEmpty(url) && Uri.IsWellFormedUriString(url, UriKind.Absolute)) parameters.Add("url", url);
+                    if (!string.IsNullOrEmpty(urlTitle) && Uri.IsWellFormedUriString(url, UriKind.Absolute)) parameters.Add("urlTitle", urlTitle);
                     var priority = MySettings.Instance.Pushover_Priority;
                     if ((int)priority != 0) parameters.Add("priority", ((int)priority).ToString(CultureInfo.InvariantCulture));
                     var sound = MySettings.Instance.Pushover_Sound;
