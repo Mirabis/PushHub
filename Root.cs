@@ -597,7 +597,7 @@ namespace PushHub
         {
             try
             {
-                var title = FormatIt( "GameMaster {0} has sent you a message", args.Args[1]);
+                var title = FormatIt( "GameMaster {0} has sent you a message.", args.Args[1]);
                 var message = (string)args.Args[0];
 
                 SendNotification(message, title);
@@ -642,14 +642,14 @@ namespace PushHub
         private static void OnMapChanged(BotEvents.Player.MapChangedEventArgs args)
         {
             var title = FormatIt( "Map Changed to {0}", args.NewMapName);
-            const string message = "Your Honorbuddy instance has changed maps from args.OldMapName to args.NewMapName";
+            const string message = "Your Honorbuddy instance has changed maps from {0} to {1}.";
             SendNotification(message, title);
         }
 
         private static void BGEntered(BattlegroundType type)
         {
             var title = FormatIt( "Battleground ({0}) Entered", type);
-            const string message = "Your Honorbuddy instance has joined a battleground on map args.NewMapName";
+            const string message = "Your Honorbuddy instance has joined a battleground on map {1}.", args.NewProfile.Name);
             SendNotification(message, title);
         }
 
@@ -663,7 +663,7 @@ namespace PushHub
         private static void OnDead()
         {
             const string title = "I Died";
-            const string message = "I've lost all my health";
+            const string message = "I've lost all my health.";
             SendNotification(message, title);
         }
 
@@ -677,21 +677,21 @@ namespace PushHub
         private static void OnStop(EventArgs args)
         {
             const string title = "Honorbuddy Stopped";
-            const string message = "Your Honorbuddy instance has stopped";
+            const string message = "Your Honorbuddy instance has stopped.";
             SendNotification(message, title);
         }
 
         private static void OnStart(EventArgs args)
         {
             const string title = "Honorbuddy Started";
-            const string message = "Your Honorbuddy instance has started";
+            const string message = "Your Honorbuddy instance has started.";
             SendNotification(message, title);
         }
 
         private static void OnLevel(BotEvents.Player.LevelUpEventArgs args)
         {
             const string title = "Level Up";
-            var message = FormatIt( "I Leveled up from {0} to {1}", args.OldLevel, args.NewLevel);
+            var message = FormatIt( "I Leveled up from {0} to {1}.", args.OldLevel, args.NewLevel);
             SendNotification(message, title);
         }
 
