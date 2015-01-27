@@ -642,14 +642,14 @@ namespace PushHub
         private static void OnMapChanged(BotEvents.Player.MapChangedEventArgs args)
         {
             var title = FormatIt( "Map Changed to {0}", args.NewMapName);
-            const string message = "Your Honorbuddy instance has changed maps from {0} to {1}.";
+            const string message = "Your Honorbuddy instance has changed maps from {0} to {1}.", args.OldProfile.Name, args.NewProfile.Name);
             SendNotification(message, title);
         }
 
         private static void BGEntered(BattlegroundType type)
         {
             var title = FormatIt( "Battleground ({0}) Entered", type);
-            const string message = "Your Honorbuddy instance has joined a battleground on map {1}.", args.NewProfile.Name);
+            const string message = "Your Honorbuddy instance has joined a battleground on map {0}.", args.NewProfile.Name);
             SendNotification(message, title);
         }
 
