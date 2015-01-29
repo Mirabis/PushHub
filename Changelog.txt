@@ -1,4 +1,15 @@
-﻿[24/01/2014 - Version: 2.0.3.3 - Type: Release]
+﻿[29/01/2014 - Version: 2.0.3.4 - Type: Release]
++ Fix for sentence endings
++ Fix for BNET messages not showing proper names
++ Fixed issues that came with recent merges
++ Changed description and title for Pushbullet client(Iden)
++ Changed description and title for Pushover client(iden)
++ Fixed a few issues with changed API
++ Fix issue with Acievement push
+
+
+
+[24/01/2014 - Version: 2.0.3.3 - Type: Release]
 + Merged community submissions
 + Few more checks to get error response on PushBullet and Pushover
 

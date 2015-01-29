@@ -131,7 +131,7 @@ namespace PushHub
         [Setting, DefaultValue(""), Category("Prowl"), DisplayName("Provider Key"), Description("(optional)Mostly for developers.")]
         public string Prowl_ProviderKey { get; set; }
 
-        [Setting, DefaultValue(""), Category("PushBullet"), DisplayName("Device"), Description("The device to send it to.")]
+        [Setting, DefaultValue(""), Category("PushBullet"), DisplayName("Device_iden"), Description("Send the push to a specific device. Appears as target_device_iden on the push. You can find this using the /v2/devices call.")]
         public string Pushbullet_Device { get; set; }
 
         [Setting, DefaultValue(""), Category("Pushover"), DisplayName("Application Token"), Description("The application Token/Key.")]
@@ -140,7 +140,7 @@ namespace PushHub
         [Setting, DefaultValue(""), Category("Pushover"), DisplayName("User Key"), Description("The authentication key.")]
         public string Pushover_UserKey { get; set; }
 
-        [Setting, DefaultValue(""), Category("Pushover"), DisplayName("Device"), Description("The device to send it to.")]
+        [Setting, DefaultValue(""), Category("Pushover"), DisplayName("Device"), Description("our user's device name to send the message directly to that device, rather than all of the user's devices")]
         public string Pushover_Device { get; set; }
 
         #endregion

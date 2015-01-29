@@ -83,7 +83,7 @@ namespace PushHub
         /// </summary>
         public override Version Version
         {
-            get { return new Version(2, 0, 3,3); }
+            get { return new Version(2, 0, 3,4); }
         }
 
         public override bool WantButton
@@ -104,6 +104,7 @@ namespace PushHub
             Logging.Write("[PushHub] Initialization complete!");
             Logging.Write("[PushHub] Visiting StatTracker for statistics, data will be removed every 30 days.");
             StatCounter();
+            OldMapName = StyxWoW.Me.MapName;
         }
 
         /// <summary>
@@ -310,6 +311,7 @@ namespace PushHub
             // Logging.Write(eg);;
         }
 
+
         #endregion
 
         #region Messages
@@ -326,7 +328,7 @@ namespace PushHub
             {
                 if (!Filtered(eg.Message)) return; //Skip
 
-                var title = FormatIt( "{0} Says ", eg.Author);
+                var title = FormatIt( "{0} Says.", eg.Author);
                 SendNotification(eg.Message, title);
             }
             catch (Exception ex)
@@ -349,7 +351,7 @@ namespace PushHub
             {
                 if (!Filtered(eg.Message)) return; //Skip
 
-                var title = FormatIt( "{0} Emotes ", eg.Author);
+                var title = FormatIt( "{0} Emotes.", eg.Author);
                 SendNotification(eg.Message, title);
             }
             catch (Exception ex)
@@ -394,7 +396,7 @@ namespace PushHub
             try
             {
                 if (!Filtered(eg.Message)) return; //Skip
-                var title = FormatIt( "Party message from {0}", eg.Author);
+                var title = FormatIt( "Party message from {0}.", eg.Author);
                 SendNotification(eg.Message, title);
             }
             catch (Exception ex)
@@ -416,7 +418,7 @@ namespace PushHub
             try
             {
                 if (!Filtered(eg.Message)) return; //Skip
-                var title = FormatIt( "Officer message from {0}", eg.Author);
+                var title = FormatIt( "Officer message from {0}.", eg.Author);
                 SendNotification(eg.Message, title);
             }
             catch (Exception ex)
@@ -438,7 +440,7 @@ namespace PushHub
             try
             {
                 if (!Filtered(eg.Message)) return; //Skip
-                var title = FormatIt( "Guild message from {0}", eg.Author);
+                var title = FormatIt( "Guild message from {0}.", eg.Author);
                 SendNotification(eg.Message, title);
             }
             catch (Exception ex)
@@ -460,7 +462,7 @@ namespace PushHub
             try
             {
                 if (!Filtered(eg.Message)) return; //Skip
-                var title = FormatIt( "Raid message from {0}", eg.Author);
+                var title = FormatIt("Raid message from {0}.", eg.Author);
                 SendNotification(eg.Message, title);
             }
             catch (Exception ex)
@@ -482,7 +484,7 @@ namespace PushHub
             try
             {
                 if (!Filtered(eg.Message)) return; //Skip
-                var title = FormatIt( "Trade message from {0}", eg.Author);
+                var title = FormatIt( "Trade message from {0}.", eg.Author);
                 SendNotification(eg.Message, title);
             }
             catch (Exception ex)
@@ -504,7 +506,7 @@ namespace PushHub
             try
             {
                 //if (!Filtered(eg.Message)) return; //Skip
-                var title = FormatIt( "Whisper from {0}", eg.Author);
+                var title = FormatIt("Whisper from {0}.", eg.Author);
                 SendNotification(eg.Message, title);
             }
             catch (Exception ex)
@@ -550,7 +552,8 @@ namespace PushHub
             try
             {
                 var message = (string)args.Args[0];
-                var title =  FormatIt( "BNET Message from {0}", args.Args[1]);
+                var infos = Lua.GetReturnValues(FormatIt("return BNGetFriendInfoByID({0}))", args.Args[12]));
+                var title =  FormatIt( "BNET Message from {0} ({1}).", infos[2],infos[4]);
 
                 SendNotification(message, title);
             }
@@ -575,7 +578,7 @@ namespace PushHub
             try
             {
                   string title = FormatIt( "Achievement Earned : {0}", args.EventName);
-                  SendNotification(FormatIt("achievementID: {0}", args.Args[0]), title, string.Format("http://www.wowhead.com/achievement={0}", args.Args[0]));
+                  SendNotification(FormatIt("achievementID: {0} -- {1}", args.Args[0],args.EventName), title, string.Format("http://www.wowhead.com/achievement={0}", args.Args[0]));
             }
             catch (Exception ex)
             {
@@ -597,7 +600,7 @@ namespace PushHub
         {
             try
             {
-                var title = FormatIt( "GameMaster {0} has sent you a message", args.Args[1]);
+                var title = FormatIt( "GameMaster ({0}) has sent you a message", args.Args[1]);
                 var message = (string)args.Args[0];
 
                 SendNotification(message, title);
@@ -618,7 +621,7 @@ namespace PushHub
         {
             if (!Filtered(args.Message)) return; //Skip
             var title = FormatIt( "{0}-Addon message from: {1}", args.Prefix, args.Sender);
-            string message = FormatIt( "Type: {0} \n Message: {1}", args.Type, args.Message);
+            string message = FormatIt( "Type: {0} \r\n Message: {1}", args.Type, args.Message);
             SendNotification(message, title);
         }
 
@@ -634,22 +637,24 @@ namespace PushHub
         {
             var quest = Quest.FromId((uint)(double)args.Args[1]);
             var title = FormatIt( "Quest Accepted: {0}", quest.Name);
-            var message = FormatIt( "Description: {0}   \n  RequiredLevel: {1} \n  RewardMoney: {2} \n RewardXP: {3}.", quest.Description, quest.RequiredLevel, quest.RewardMoney, quest.RewardXp);
+            var message = FormatIt( "Description: {0}   \r\n  RequiredLevel: {1} \n  RewardMoney: {2} \n RewardXP: {3}.", quest.Description, quest.RequiredLevel, quest.RewardMoney, quest.RewardXp);
             var url = FormatIt( "http://www.wowhead.com/quest={0}", quest.Id);
             SendNotification(message, title, url);
         }
 
+        private static string OldMapName;
         private static void OnMapChanged(BotEvents.Player.MapChangedEventArgs args)
         {
             var title = FormatIt( "Map Changed to {0}", args.NewMapName);
-            const string message = "Your Honorbuddy instance has changed maps from {1} to {0}.", args.OldMapName, args.NewMapName";
+            string message = FormatIt("Your Honorbuddy instance has changed maps from {1} to {0}.", OldMapName, args.NewMapName);
+            OldMapName = args.NewMapName;
             SendNotification(message, title);
         }
 
         private static void BGEntered(BattlegroundType type)
         {
-            var title = FormatIt( "Battleground ({0}) Entered", type);
-            const string message = "Your Honorbuddy instance has joined a battleground on map {0}.", args.NewMapName";
+            var title = FormatIt( "Battleground ({0}) Entered", type.ToString());
+            string message = FormatIt("Your Honorbuddy instance has joined a battleground on map: {0}.", StyxWoW.Me.MapName);
             SendNotification(message, title);
         }
 
@@ -677,20 +682,20 @@ namespace PushHub
         private static void OnStop(EventArgs args)
         {
             const string title = "Honorbuddy Stopped";
-            const string message = "Your Honorbuddy instance has stopped!.;
+            const string message = "Your Honorbuddy instance has stopped!";
             SendNotification(message, title);
         }
 
         private static void OnStart(EventArgs args)
         {
             const string title = "Honorbuddy Started";
-            const string message = "Your Honorbuddy instance has started.";
+            const string message = "Your Honorbuddy instance has started!";
             SendNotification(message, title);
         }
 
         private static void OnLevel(BotEvents.Player.LevelUpEventArgs args)
         {
-            const string title = "I Leveled Up!;
+            const string title = "I Leveled Up!";
             var message = FormatIt( "I Leveled up from {0} to {1}.", args.OldLevel, args.NewLevel);
             SendNotification(message, title);
         }
@@ -732,7 +737,7 @@ namespace PushHub
         {
             try
             {
-                return format == null ? "Something went wrong." : string.Format(format, args).Replace("\n",Environment.NewLine);
+                return format == null ? "Something went wrong." : string.Format(format, args).Replace("\r\n",Environment.NewLine);
             }
             catch (Exception ex)
             {
