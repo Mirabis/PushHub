@@ -653,7 +653,7 @@ namespace PushHub
 
         private static void BGEntered(BattlegroundType type)
         {
-            var title = FormatIt( "Battleground ({0}) Entered", type.ToString());
+            var title = FormatIt("Battleground ({0}) Entered", type.ToString());
             string message = FormatIt("Your Honorbuddy instance has joined a battleground on map: {0}.", StyxWoW.Me.MapName);
             SendNotification(message, title);
         }
@@ -713,6 +713,7 @@ namespace PushHub
 
         internal static void SendNotification(string message, string title, string url = null)
         {
+            title = string.Format("{0}::{1}", StyxWoW.Me.Name, title);
             if (LogQueue.Contains(string.Format("{0}-{1}", message,title)))
             {
                 return;

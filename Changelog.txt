@@ -1,4 +1,7 @@
-﻿[29/01/2014 - Version: 2.0.3.4 - Type: Release]
+﻿[16/02/2014 - Version: 2.0.3.5 - Type: Release]
++ Messages are prefixed with the toons name
+
+[29/01/2014 - Version: 2.0.3.4 - Type: Release]
 + Fix for sentence endings
 + Fix for BNET messages not showing proper names
 + Fixed issues that came with recent merges
@@ -7,13 +10,9 @@
 + Fixed a few issues with changed API
 + Fix issue with Acievement push
 
-
-
 [24/01/2014 - Version: 2.0.3.3 - Type: Release]
 + Merged community submissions
 + Few more checks to get error response on PushBullet and Pushover
-
-
 
 [13/01/2014 - Version: 2.0.3.2 - Type: Release]
 + Fix for double notifications ,using a queue
@@ -23,7 +22,6 @@
 + Merged a fix submitted by Sosnooley
 + No longer adding the characters name on filters when it already exists
 + Form onClosing will now re-register events
-
 
 [03/01/2014 - Version: 2.0.3.0 - Type: Release]
 + Fixed Pushalot coming up empty
