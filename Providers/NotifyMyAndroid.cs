@@ -1,51 +1,28 @@
-﻿#region License
+﻿//  Author: Moreno Sint Hill alias Mirabis
+// Created on: 01/06/2015 23:02
+// Last Edited on:  01/06/2015 23:04
+// File: PushHub.PushHub.NotifyMyAndroid.cs
+// Copyright:  2015, Moreno Sint Hill - All rights reserved.
+//  
+// ALL CONTENTS IN THIS PROJECT ARE PROTECTED BY COPYRIGHT. EXCEPT AS SPECIFICALLY PERMITTED HEREIN, 
+// NO PORTION OF THE INFORMATION IN THIS PROJECT MAY BE REPRODUCED IN ANY FORM, OR BY ANY MEANS, WITHOUT PRIOR WRITTEN PERMISSION FROM Mirabis <info@mirabis.nl>. 
+// IT IS NOT PERMITTED TO MODIFY, DISTRIBUTE, PUBLISH, TRANSMIT OR CREATE DERIVATIVE WORKS OF ANY MATERIAL FOUND IN THIS PROJECT FOR ANY PUBLIC OR COMMERCIAL PURPOSES.
 
-// Author: Moreno Sint Hill alias Mirabis
-// Created on: 01/12/2014                
-// Last Edited on: 01/12/2014
-// Project: PushHub
-// File: NotifyMyAndroid.cs
-// Copyright:  2014, Moreno Sint Hill - All rights reserved.
-// 
-// Redistribution and use in source and binary forms, with or without
-// modification, are permitted provided that the following conditions are met:
-// 
-// 1. Redistributions of source code must retain the above copyright notice, this
-//    list of conditions and the following disclaimer. 
-// 2. Redistributions in binary form must reproduce the above copyright notice,
-//    this list of conditions and the following disclaimer in the documentation
-//    and/or other materials provided with the distribution.
-// 
-// THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS" AND
-// ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE IMPLIED
-// WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE ARE
-// DISCLAIMED. IN NO EVENT SHALL THE COPYRIGHT OWNER OR CONTRIBUTORS BE LIABLE FOR
-// ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY, OR CONSEQUENTIAL DAMAGES
-// (INCLUDING, BUT NOT LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES;
-// LOSS OF USE, DATA, OR PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND
-// ON ANY THEORY OF LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT
-// (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS
-// SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
-// 
-// The views and conclusions contained in the software and documentation are those
-// of the authors and should not be interpreted as representing official policies, 
-// either expressed or implied, of the FreeBSD Project.
+#region Usings
+
+using System;
+using System.Collections.Specialized;
+using System.Globalization;
+using System.Net;
+using System.Text;
+using System.Threading.Tasks;
+using PushHub.Externals;
+using Styx.Common;
 
 #endregion
 
 namespace PushHub.Providers
 {
-    using System;
-    using System.Collections.Specialized;
-    using System.Globalization;
-    using System.Net;
-    using System.Text;
-    using System.Threading.Tasks;
-
-    using PushHub.Externals;
-
-    using Styx.Common;
-
     public class NotifyMyAndroid
     {
         /// <summary>

@@ -1,46 +1,24 @@
-﻿#region License
+﻿//  Author: Moreno Sint Hill alias Mirabis
+// Created on: 01/06/2015 23:02
+// Last Edited on:  01/06/2015 23:04
+// File: PushHub.PushHub.UI.cs
+// Copyright:  2015, Moreno Sint Hill - All rights reserved.
+//  
+// ALL CONTENTS IN THIS PROJECT ARE PROTECTED BY COPYRIGHT. EXCEPT AS SPECIFICALLY PERMITTED HEREIN, 
+// NO PORTION OF THE INFORMATION IN THIS PROJECT MAY BE REPRODUCED IN ANY FORM, OR BY ANY MEANS, WITHOUT PRIOR WRITTEN PERMISSION FROM Mirabis <info@mirabis.nl>. 
+// IT IS NOT PERMITTED TO MODIFY, DISTRIBUTE, PUBLISH, TRANSMIT OR CREATE DERIVATIVE WORKS OF ANY MATERIAL FOUND IN THIS PROJECT FOR ANY PUBLIC OR COMMERCIAL PURPOSES.
 
-// Author: Moreno Sint Hill alias Mirabis
-// Created on: 01/12/2014                
-// Last Edited on: 01/12/2014
-// Project: PushHub
-// File: UI.cs
-// Copyright:  2014, Moreno Sint Hill - All rights reserved.
-// 
-// Redistribution and use in source and binary forms, with or without
-// modification, are permitted provided that the following conditions are met:
-// 
-// 1. Redistributions of source code must retain the above copyright notice, this
-//    list of conditions and the following disclaimer. 
-// 2. Redistributions in binary form must reproduce the above copyright notice,
-//    this list of conditions and the following disclaimer in the documentation
-//    and/or other materials provided with the distribution.
-// 
-// THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS" AND
-// ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE IMPLIED
-// WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE ARE
-// DISCLAIMED. IN NO EVENT SHALL THE COPYRIGHT OWNER OR CONTRIBUTORS BE LIABLE FOR
-// ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY, OR CONSEQUENTIAL DAMAGES
-// (INCLUDING, BUT NOT LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES;
-// LOSS OF USE, DATA, OR PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND
-// ON ANY THEORY OF LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT
-// (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS
-// SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
-// 
-// The views and conclusions contained in the software and documentation are those
-// of the authors and should not be interpreted as representing official policies, 
-// either expressed or implied, of the FreeBSD Project.
+#region Usings
+
+using System;
+using System.ComponentModel;
+using System.Windows.Forms;
+using PushHub.Properties;
 
 #endregion
 
 namespace PushHub.Interface
 {
-    using System;
-    using System.ComponentModel;
-    using System.Windows.Forms;
-
-    using PushHub.Properties;
-
     public partial class UI : Form
     {
         public UI()
@@ -125,53 +103,29 @@ namespace PushHub.Interface
         }
 
         private void TestBtn_Click(object sender, EventArgs e) { Root.SendNotification("This is a test notification", "PushHub Test", ""); }
-
         private void ON_LevelUp_CheckedChanged(object sender) { MySettings.Instance.ON_LevelUp = ON_LevelUp.Checked; }
-
         private void ON_Whisper_CheckedChanged(object sender) { MySettings.Instance.ON_Whisper = ON_Whisper.Checked; }
-
         private void ON_BnetMessage_CheckedChanged(object sender) { MySettings.Instance.ON_Bnet = ON_BnetMessage.Checked; }
-
         private void ON_GuildMessage_CheckedChanged(object sender) { MySettings.Instance.ON_GuildMessage = ON_GuildMessage.Checked; }
-
         private void ON_Say_CheckedChanged(object sender) { MySettings.Instance.ON_SayMessage = ON_Say.Checked; }
-
         private void ON_PartyMessage_CheckedChanged(object sender) { MySettings.Instance.ON_PartyMessage = ON_PartyMessage.Checked; }
-
         private void ON_BGMessage_CheckedChanged(object sender) { MySettings.Instance.ON_BGMessage = ON_BGMessage.Checked; }
-
         private void ON_Officer_CheckedChanged(object sender) { MySettings.Instance.ON_OfficerMessage = ON_Officer.Checked; }
-
         private void ON_GameMaster_CheckedChanged(object sender) { MySettings.Instance.ON_Gamemastermessage = ON_GameMaster.Checked; }
-
         private void ON_TradeMessage_CheckedChanged(object sender) { MySettings.Instance.ON_Trademessage = ON_TradeMessage.Checked; }
-
         private void ON_Death_CheckedChanged(object sender) { MySettings.Instance.ON_Death = ON_Death.Checked; }
-
         private void ON_Achiev_CheckedChanged(object sender) { MySettings.Instance.ON_Achievement = ON_Achiev.Checked; }
-
         private void ON_BGLeft_CheckedChanged(object sender) { MySettings.Instance.ON_BGLeft = ON_BGLeft.Checked; }
-
         private void ON_BGJoined_CheckedChanged(object sender) { MySettings.Instance.ON_BGJoined = ON_BGJoined.Checked; }
-
         private void ON_Start_CheckedChanged(object sender) { MySettings.Instance.ON_Start = ON_Start.Checked; }
-
         private void ON_Stop_CheckedChanged(object sender) { MySettings.Instance.ON_Stop = ON_Stop.Checked; }
-
         private void ON_MapChanged_CheckedChanged(object sender) { MySettings.Instance.ON_MapChanged = ON_MapChanged.Checked; }
-
         private void ON_QuestAccepted_CheckedChanged(object sender) { MySettings.Instance.ON_QuestAccepted = ON_QuestAccepted.Checked; }
-
         private void ON_ProfileChanged_CheckedChanged(object sender) { MySettings.Instance.ON_ProfileChanged = ON_ProfileChanged.Checked; }
-
         private void chromeCheckbox1_CheckedChanged(object sender) { MySettings.Instance.ON_Raidmessage = ON_RaidMessage.Checked; }
-
         private void chromeCheckbox1_CheckedChanged_1(object sender) { MySettings.Instance.ON_Yellmessage = ON_Yell.Checked; }
-
         private void ON_Addon_CheckedChanged(object sender) { MySettings.Instance.ON_Addonmessage = ON_Addon.Checked; }
-
         private void ON_Filtering_CheckedChanged(object sender) { MySettings.Instance.CheckTriggerList = ON_Filtering.Checked; }
-
         private void ON_Disconnect_CheckedChanged(object sender) { MySettings.Instance.ON_Disconnect = ON_Disconnect.Checked; }
     }
 }

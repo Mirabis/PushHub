@@ -34,11 +34,11 @@
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="GreyMagic">
-      <HintPath>..\..\..\Documents\Honorbuddy\GreyMagic.dll</HintPath>
+      <HintPath>..\..\..\Honorbuddy\GreyMagic.dll</HintPath>
     </Reference>
     <Reference Include="Honorbuddy, Version=2.5.7653.653, Culture=neutral, PublicKeyToken=50a565ab5c01ae50, processorArchitecture=x86">
       <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\..\..\Documents\Honorbuddy\Honorbuddy.exe</HintPath>
+      <HintPath>..\..\..\Honorbuddy\Honorbuddy.exe</HintPath>
     </Reference>
     <Reference Include="PresentationCore" />
     <Reference Include="System" />
@@ -52,7 +52,7 @@
     <Reference Include="System.Xml" />
     <Reference Include="Tripper.Tools, Version=1.0.0.0, Culture=neutral, PublicKeyToken=c40611ce03f849a2, processorArchitecture=x86">
       <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\..\..\Documents\Honorbuddy\Tripper.Tools.dll</HintPath>
+      <HintPath>..\..\..\Honorbuddy\Tripper.Tools.dll</HintPath>
     </Reference>
   </ItemGroup>
   <ItemGroup>
