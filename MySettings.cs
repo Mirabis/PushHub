@@ -22,10 +22,10 @@ using DefaultValue = Styx.Helpers.DefaultValueAttribute;
 
 namespace PushHub
 {
+    [Obfuscation(Exclude = true)]
     internal class MySettings : Settings
     {
         [Setting, Browsable(false), DefaultValue(true)]
-        [Obfuscation(Exclude = true)]
         public bool CheckTriggerList { get; set; }
 
         #region Default
